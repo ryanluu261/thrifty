@@ -1,5 +1,10 @@
 # SideQuest
 
+## Installation
+
+To install all the node modules, use `yarn install`.
+
+
 ![Team Photo](Insert a Team Photo URL here)
 [*how?*](https://help.github.com/articles/about-readmes/#relative-links-and-image-paths-in-readme-files)
 
