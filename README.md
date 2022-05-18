@@ -1,7 +1,7 @@
 # SideQuest
 
 
-![Team Photo]("C:\Users\iboo0\Documents\cs52 project stuff\group image.html")
+![Team Photo]("project-sidequest\README_Images\groupimage.jpeg")
 [*how?*](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes#relative-links-and-image-paths-in-readme-files)
 
 TODO: short project description, some sample screenshots or mockups
