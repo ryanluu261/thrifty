@@ -1,8 +1,8 @@
 # SideQuest
 
 
-![Team Photo](Insert a Team Photo URL here)
-[*how?*]("C:\Users\iboo0\Documents\cs52 project stuff\group image.html")
+![Team Photo]("C:\Users\iboo0\Documents\cs52 project stuff\group image.html")
+[*how?*]()
 
 TODO: short project description, some sample screenshots or mockups
 - Creating an app called sideQuest where users are given daily tasks to complete and compete against their friends with
