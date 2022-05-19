@@ -1,13 +1,15 @@
 # SideQuest
 
 
-![Team Photo]("../README_Images/groupimage.jpeg")
+![Team Photo](groupimage.jpeg)
 [*how?*](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes#relative-links-and-image-paths-in-readme-files)
 
 TODO: short project description, some sample screenshots or mockups
 - Creating an app called sideQuest where users are given daily tasks to complete and compete against their friends with
 a leaderboard and close friends feature as well!. 
-~ need to add in screenshots 
+- ![loginscreen](loginscreen.png))
+- ![feed](feedpage.png))
+
 
 ## Architecture
 
@@ -27,3 +29,4 @@ TODO: ~work in progress
 TODO: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed Hussaini
 
 ## Acknowledgments
+- Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA)
