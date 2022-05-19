@@ -29,4 +29,4 @@ TODO: ~work in progress
 TODO: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed Hussaini
 
 ## Acknowledgments
-- Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA)
+- Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA), and Tim Tregubov
