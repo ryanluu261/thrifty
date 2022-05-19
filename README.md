@@ -29,5 +29,11 @@ TODO: ~work in progress
 TODO: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed Hussaini
 
 ## Acknowledgments
+I love my teammates -Zhoucai
+
+=======
 - Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA), and Tim Tregubov
+
 - also changing one line beep 
+- changing one line for pull request beep boop
+
