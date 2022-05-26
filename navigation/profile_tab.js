@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
-  StyleSheet, View, Text, Image,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
-class ProfileTab extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
-        />
-        <Text>
-          This is the Profile Tab
-        </Text>
-      </View>
-    );
-  }
-}
+import { createStackNavigator } from '@react-navigation/stack';
+import RewardList from '../components/reward_list';
+import RewardDetail from '../components/reward_detail';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  image: {
-    width: 400,
-    height: 300,
-  },
-});
+const Stack = createStackNavigator();
+
+function ProfileTab() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name='RewardList'
+        component={RewardList}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='RewardDetail'
+        component={RewardDetail}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default ProfileTab;

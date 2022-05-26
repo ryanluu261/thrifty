@@ -38,9 +38,4 @@ I love my teammates -Zhoucai
 
 - also changing one line beep
 - changing one line for pull request beep boop
-<<<<<<< HEAD
 - Very important change to readme file
-=======
-- Antoher beep boop beep
-
->>>>>>> 3e38b960a5aa3eb4a1192680cfb9be34a353cd6e
