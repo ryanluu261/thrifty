@@ -1,16 +1,21 @@
+// Camera Stack Component
+// Contains the new post, camera page, and image preview
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import CameraPage from './camera_page';
 import NewPost from './new_post';
+import ImagePreview from './image_preview';
 
 const Stack = createStackNavigator();
 
-// nest stack navigator to handle two internal views
-// "name" prop is the name of the route
 function CameraStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen
         name="NewPost"
         component={NewPost}
@@ -19,6 +24,7 @@ function CameraStack() {
         }}
       />
       <Stack.Screen name="CameraPage" component={CameraPage} />
+      <Stack.Screen name="ImagePreview" component={ImagePreview} />
     </Stack.Navigator>
   );
 }
