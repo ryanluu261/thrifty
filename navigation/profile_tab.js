@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text,
+  StyleSheet, View, Text, Image,
 } from 'react-native';
 import Svg, { Polygon, Line, Text as SvgText } from 'react-native-svg';
+import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const stats = {
   wisdom: 50,
@@ -82,153 +83,246 @@ const innerPent1 = '150,75 79,127 106,211 194,211 221,127';
 const innerPent2 = '150,100 102,135 121,190 179,190 198,135';
 const innerPent3 = '150,125 126,142 135,170 165,170 174,142';
 
+function pentagonStat() {
+  return (
+    <Svg height="250" width="275">
+      <Polygon
+        points={bigPent}
+            // "0,45 50,10 100,45 80,100 20,100"
+            // "100,90 90,97 94,108 106,108 110,97"
+        fill="#FFCC15"
+        stroke="black"
+        strokeWidth="2"
+      />
+      <Polygon
+        points={innerPent1}
+            // fill="#FFCC15"
+        stroke="black"
+        strokeWidth="2"
+      />
+
+      <Polygon
+        points={innerPent2}
+            // fill="#FFCC15"
+        stroke="black"
+        strokeWidth="2"
+      />
+
+      <Polygon
+        points={innerPent3}
+            // fill="#FFCC15"
+        stroke="black"
+        strokeWidth="2"
+      />
+
+      <SvgText
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
+        x={wisdomX}
+        y={wisdomY - 5}
+        textAnchor="middle"
+        strokeWidth="2"
+      >
+        WIS
+      </SvgText>
+      <SvgText
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
+        x={strengthX - 15}
+        y={strengthY}
+        textAnchor="middle"
+        strokeWidth="2"
+      >
+        STR
+      </SvgText>
+      <SvgText
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
+        x={charismaX}
+        y={charismaY + 10}
+        textAnchor="middle"
+        strokeWidth="2"
+      >
+        CHA
+      </SvgText>
+      <SvgText
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
+        x={magicX}
+        y={magicY + 10}
+        textAnchor="middle"
+        strokeWidth="2"
+      >
+        MP
+      </SvgText>
+      <SvgText
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
+        x={healthX + 10}
+        y={healthY}
+        textAnchor="middle"
+        strokeWidth="2"
+      >
+        HP
+      </SvgText>
+      <Line x1={statX} y1={statY} x2={wisdomX} y2={wisdomY} stroke="black" strokeWidth="2" />
+      <Line x1={statX} y1={statY} x2={strengthX} y2={strengthY} stroke="black" strokeWidth="2" />
+      <Line x1={statX} y1={statY} x2={charismaX} y2={charismaY} stroke="black" strokeWidth="2" />
+      <Line x1={statX} y1={statY} x2={magicX} y2={magicY} stroke="black" strokeWidth="2" />
+      <Line x1={statX} y1={statY} x2={healthX} y2={healthY} stroke="black" strokeWidth="2" />
+
+      <Polygon
+        points={statPent}
+        fill="green"
+            // stroke="purple"
+        strokeWidth="1"
+        opacity="0.8"
+      />
+    </Svg>
+  );
+}
 class ProfileTab extends Component {
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.statContainer}>
-          <View style={styles.numberContainer}>
-            <Text style={styles.statText}> Stats: </Text>
-            <Text style={styles.statText}>
-              {' '}
-              Current Streak:
-              {' '}
-              {stats.streak}
-            </Text>
-            <Text style={styles.statText}>
-              {' '}
-              wisdom:
-              {' '}
-              {stats.wisdom}
-            </Text>
-            <Text style={styles.statText}>
-              {' '}
-              strength:
-              {' '}
-              {stats.strength}
-            </Text>
-            <Text style={styles.statText}>
-              {' '}
-              charisma:
-              {' '}
-              {stats.charisma}
-              {' '}
-            </Text>
-            <Text style={styles.statText}>
-              {' '}
-              magic:
-              {' '}
-              {stats.magic}
-              {' '}
-            </Text>
-            <Text style={styles.statText}>
-              {' '}
-              health:
-              {' '}
-              {stats.health}
-              {' '}
-            </Text>
+          <View style={styles.topContainer}>
+            <Ionicons style={styles.tinyLogo} name="account-box" size={45} color="black" />
+            <Text> Billy Bob Jones </Text>
+            <Text> Lv. 12 </Text>
           </View>
-          <Svg height="250" width="275">
-            <Polygon
-              points={bigPent}
-            // "0,45 50,10 100,45 80,100 20,100"
-            // "100,90 90,97 94,108 106,108 110,97"
-              fill="#FFCC15"
-              stroke="black"
-              strokeWidth="1"
-            />
-            <Polygon
-              points={innerPent1}
-            // fill="#FFCC15"
-              stroke="black"
-              strokeWidth="1"
-            />
 
-            <Polygon
-              points={innerPent2}
-            // fill="#FFCC15"
-              stroke="black"
-              strokeWidth="1"
-            />
+          <View style={styles.numberContainer}>
+            <View style={styles.equipmentContainer}>
+              <View style={styles.equipment}>
+                <Ionicons name="sword" size={70} color="black" />
+              </View>
+              <View style={styles.equipment}>
+                <Ionicons name="tshirt-crew" size={70} color="black" />
+              </View>
+              <View style={styles.equipment}>
+                <Ionicons name="ring" size={70} color="black" />
+              </View>
+            </View>
+            <View style={styles.avatarContainer}>
+              <Ionicons style={styles.icons} name="account-box" size={150} color="black" />
+              <View style={styles.statsContainer}>
+                <View style={styles.stat}>
+                  <Text style={styles.statText}>
+                    {' '}
+                    SKS:
+                    {' '}
+                    {stats.streak}
+                  </Text>
+                </View>
+                <View style={styles.stat}>
+                  <Text style={styles.statText}>
+                    {' '}
+                    WIS:
+                    {' '}
+                    {stats.wisdom}
+                  </Text>
+                </View>
+                <View style={styles.stat}>
+                  <Text style={styles.statText}>
+                    {' '}
+                    STR:
+                    {' '}
+                    {stats.strength}
+                  </Text>
+                </View>
+                <View style={styles.stat}>
+                  <Text style={styles.statText}>
+                    {' '}
+                    CHA:
+                    {' '}
+                    {stats.charisma}
+                  </Text>
+                </View>
+                <View style={styles.stat}>
+                  <Text style={styles.statText}>
+                    {' '}
+                    MP:
+                    {' '}
+                    {stats.magic}
+                  </Text>
+                </View>
+                <View style={styles.stat}>
+                  <Text style={styles.statText}>
+                    {' '}
+                    HP:
+                    {' '}
+                    {stats.health}
+                  </Text>
+                </View>
+              </View>
+            </View>
 
-            <Polygon
-              points={innerPent3}
-            // fill="#FFCC15"
-              stroke="black"
-              strokeWidth="1"
-            />
+            {/* <Text style={styles.statText}> Stats: </Text>
+              <Text style={styles.statText}>
+                {' '}
+                Current Streak:
+                {' '}
+                {stats.streak}
+              </Text>
+              <Text style={styles.statText}>
+                {' '}
+                wisdom:
+                {' '}
+                {stats.wisdom}
+              </Text>
+              <Text style={styles.statText}>
+                {' '}
+                strength:
+                {' '}
+                {stats.strength}
+              </Text>
+              <Text style={styles.statText}>
+                {' '}
+                charisma:
+                {' '}
+                {stats.charisma}
+                {' '}
+              </Text>
+              <Text style={styles.statText}>
+                {' '}
+                magic:
+                {' '}
+                {stats.magic}
+                {' '}
+              </Text>
+              <Text style={styles.statText}>
+                {' '}
+                health:
+                {' '}
+                {stats.health}
+                {' '}
+              </Text> */}
 
-            <SvgText
-              fill="black"
-              stroke=""
-              fontSize="10"
-              fontWeight="bold"
-              x={wisdomX}
-              y={wisdomY - 5}
-              textAnchor="middle"
-            >
-              WIS
-            </SvgText>
-            <SvgText
-              fill="black"
-              stroke=""
-              fontSize="10"
-              fontWeight="bold"
-              x={strengthX - 15}
-              y={strengthY}
-              textAnchor="middle"
-            >
-              STR
-            </SvgText>
-            <SvgText
-              fill="black"
-              stroke=""
-              fontSize="10"
-              fontWeight="bold"
-              x={charismaX}
-              y={charismaY + 10}
-              textAnchor="middle"
-            >
-              CHA
-            </SvgText>
-            <SvgText
-              fill="black"
-              stroke=""
-              fontSize="10"
-              fontWeight="bold"
-              x={magicX}
-              y={magicY + 10}
-              textAnchor="middle"
-            >
-              MP
-            </SvgText>
-            <SvgText
-              fill="black"
-              stroke=""
-              fontSize="10"
-              fontWeight="bold"
-              x={healthX + 10}
-              y={healthY}
-              textAnchor="middle"
-            >
-              HP
-            </SvgText>
-            <Line x1={statX} y1={statY} x2={wisdomX} y2={wisdomY} stroke="black" strokeWidth="1" />
-            <Line x1={statX} y1={statY} x2={strengthX} y2={strengthY} stroke="black" strokeWidth="1" />
-            <Line x1={statX} y1={statY} x2={charismaX} y2={charismaY} stroke="black" strokeWidth="1" />
-            <Line x1={statX} y1={statY} x2={magicX} y2={magicY} stroke="black" strokeWidth="1" />
-            <Line x1={statX} y1={statY} x2={healthX} y2={healthY} stroke="black" strokeWidth="1" />
-
-            <Polygon
-              points={statPent}
-              fill="green"
-            // stroke="purple"
-              strokeWidth="1"
-              opacity="0.8"
-            />
-          </Svg>
+            <View style={styles.equipmentContainer}>
+              <View style={styles.equipment}>
+                <Ionicons name="shield-star" size={70} color="black" />
+              </View>
+              <View style={styles.equipment}>
+                <Ionicons name="wizard-hat" size={70} color="black" />
+              </View>
+              <View style={styles.equipment}>
+                <Ionicons name="shoe-sneaker" size={70} color="black" />
+              </View>
+            </View>
+          </View>
         </View>
+        {pentagonStat()}
       </View>
 
     );
@@ -247,17 +341,18 @@ const styles = StyleSheet.create({
   statContainer: {
     // flex: 1,
     backgroundColor: '#FFCC15',
-    height: 250,
+    height: 400,
     width: '95%',
     borderRadius: 5,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-
+    justifyContent: 'space-evenly',
+    borderBottomColor: 'black',
+    borderBottomWidth: 5,
   },
   numberContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    justifyContent: 'center',
     // padding: 20,
   },
   titleText: {
@@ -270,7 +365,76 @@ const styles = StyleSheet.create({
   statText: {
     fontFamily: 'Cochin',
     fontWeight: 'bold',
+    fontSize: 10,
     padding: 2,
+  },
+  tinyLogo: {
+    height: 50,
+    width: 50,
+    marginLeft: 10,
+    marginTop: 10,
+    borderColor: 'white',
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  topContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#ffad15',
+    width: '100%',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    height: 75,
+  },
+  equipmentContainer: {
+    // backgroundColor: '#ffad15',
+    height: 300,
+    width: 100,
+    // borderColor: 'white',
+    // borderWidth: 2,
+    // borderRadius: 5,
+    margin: 5,
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  avatarContainer: {
+    backgroundColor: '#ffad15',
+    height: 150,
+    width: 150,
+    borderColor: 'white',
+    borderWidth: 2,
+    borderRadius: 5,
+    margin: 5,
+    alignSelf: 'center',
+  },
+  equipment: {
+    backgroundColor: '#ffad15',
+    height: 75,
+    width: 75,
+    borderColor: 'white',
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+
+  },
+  stat: {
+    backgroundColor: '#ffad15',
+    height: 20,
+    width: 45,
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 5,
+    margin: 1,
+  },
+  icons: {
+    width: '100%',
+    height: '100%',
   },
 });
 
