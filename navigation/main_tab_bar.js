@@ -17,7 +17,7 @@ function MainTabBar() {
   return (
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName='Home'
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => {
             let iconName;
@@ -34,15 +34,20 @@ function MainTabBar() {
               iconName = 'account-circle';
             }
 
-            return <Ionicons name={iconName} size={26} color={focused ? '#FFFFFF' : '#000000'} />;
+            return (
+              <Ionicons
+                name={iconName}
+                size={26}
+                color={focused ? '#FFFFFF' : '#000000'}
+              />
+            );
           },
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeTab} />
-        <Tab.Screen name="Search" component={SearchTab} />
-        <Tab.Screen name="Quest" component={QuestTab} />
-        <Tab.Screen name="Groups" component={GroupTab} />
-        <Tab.Screen name="Profile" component={ProfileTab} />
+        })}>
+        <Tab.Screen name='Home' component={HomeTab} />
+        <Tab.Screen name='Search' component={SearchTab} />
+        <Tab.Screen name='Quest' component={QuestTab} />
+        <Tab.Screen name='Groups' component={GroupTab} />
+        <Tab.Screen name='Profile' component={ProfileTab} />
       </Tab.Navigator>
     </NavigationContainer>
   );

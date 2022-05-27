@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import RewardDetail from '../components/reward_detail';
 
 const RewardList = () => {
   const navigation = useNavigation();
