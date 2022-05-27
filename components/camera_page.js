@@ -2,6 +2,7 @@
 // Handles taking the pictures & selecting pictures from the gallery
 // Can also flip camera used
 
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-unused-vars */
@@ -15,8 +16,7 @@ import {
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import { Camera, CameraType } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
-// import { useIsFocused } from '@react-navigation/native';
-import { withNavigationFocus } from 'react-navigation';
+import { useIsFocused } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -34,12 +34,6 @@ class CameraPage extends Component {
     this.getGalleryPicture = this.getGalleryPicture.bind(this);
     this.handleCameraFlip = this.handleCameraFlip.bind(this);
   }
-
-  // componentDidMount() {
-  //   if (this.camera !== undefined && this.camera !== null) {
-  //     this.camera.current.resumePreview();
-  //   }
-  // }
 
   async takePicture() {
     if (this.camera) {
@@ -87,20 +81,20 @@ class CameraPage extends Component {
 
   render() {
     const { cameraType } = this.state;
-    // const { isFocused } = this.props;
+    const { isFocused } = this.props;
 
     return (
       <View styles={styles.camera_page_container}>
         <View styles={styles.camera_container}>
           {
-            // isFocused
-            // && (
+            isFocused
+            && (
             <Camera
               ref={this.camera}
               type={cameraType}
               style={styles.camera}
             />
-            // )
+            )
           }
         </View>
         <View style={styles.camera_bottom_container}>
@@ -162,4 +156,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CameraPage;
+const CameraPageComponent = function CameraPageFunction(props) {
+  const isFocused = useIsFocused();
+
+  return <CameraPage {...props} isFocused={isFocused} />;
+};
+
+export default CameraPageComponent;
