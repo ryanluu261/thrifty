@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import {
+  StyleSheet, View, Text,
+} from 'react-native';
 import Svg, { Polygon, Line, Text as SvgText } from 'react-native-svg';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
@@ -177,89 +179,94 @@ const innerPent3 = '150,125 126,142 135,170 165,170 174,142';
 
 function pentagonStat() {
   return (
-    <Svg height='250' width='275'>
+    <Svg height="250" width="275">
       <Polygon
         points={bigPent}
         // "0,45 50,10 100,45 80,100 20,100"
         // "100,90 90,97 94,108 106,108 110,97"
-        fill='#FFCC15'
-        stroke='black'
-        strokeWidth='2'
+        fill="#FFCC15"
+        stroke="black"
+        strokeWidth="2"
       />
       <Polygon
         points={innerPent1}
         // fill="#FFCC15"
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
 
       <Polygon
         points={innerPent2}
         // fill="#FFCC15"
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
 
       <Polygon
         points={innerPent3}
         // fill="#FFCC15"
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
 
       <SvgText
-        fill='black'
-        stroke=''
-        fontSize='10'
-        fontWeight='bold'
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
         x={wisdomX}
         y={wisdomY - 5}
-        textAnchor='middle'
-        strokeWidth='2'>
+        textAnchor="middle"
+        strokeWidth="2"
+      >
         WIS
       </SvgText>
       <SvgText
-        fill='black'
-        stroke=''
-        fontSize='10'
-        fontWeight='bold'
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
         x={strengthX - 15}
         y={strengthY}
-        textAnchor='middle'
-        strokeWidth='2'>
+        textAnchor="middle"
+        strokeWidth="2"
+      >
         STR
       </SvgText>
       <SvgText
-        fill='black'
-        stroke=''
-        fontSize='10'
-        fontWeight='bold'
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
         x={charismaX}
         y={charismaY + 10}
-        textAnchor='middle'
-        strokeWidth='2'>
+        textAnchor="middle"
+        strokeWidth="2"
+      >
         CHA
       </SvgText>
       <SvgText
-        fill='black'
-        stroke=''
-        fontSize='10'
-        fontWeight='bold'
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
         x={magicX}
         y={magicY + 10}
-        textAnchor='middle'
-        strokeWidth='2'>
+        textAnchor="middle"
+        strokeWidth="2"
+      >
         MP
       </SvgText>
       <SvgText
-        fill='black'
-        stroke=''
-        fontSize='10'
-        fontWeight='bold'
+        fill="black"
+        stroke=""
+        fontSize="10"
+        fontWeight="bold"
         x={healthX + 10}
         y={healthY}
-        textAnchor='middle'
-        strokeWidth='2'>
+        textAnchor="middle"
+        strokeWidth="2"
+      >
         HP
       </SvgText>
       <Line
@@ -267,53 +274,53 @@ function pentagonStat() {
         y1={statY}
         x2={wisdomX}
         y2={wisdomY}
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
       <Line
         x1={statX}
         y1={statY}
         x2={strengthX}
         y2={strengthY}
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
       <Line
         x1={statX}
         y1={statY}
         x2={charismaX}
         y2={charismaY}
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
       <Line
         x1={statX}
         y1={statY}
         x2={magicX}
         y2={magicY}
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
       <Line
         x1={statX}
         y1={statY}
         x2={healthX}
         y2={healthY}
-        stroke='black'
-        strokeWidth='2'
+        stroke="black"
+        strokeWidth="2"
       />
 
       <Polygon
         points={statPent}
-        fill='green'
+        fill="green"
         // stroke="purple"
-        strokeWidth='1'
-        opacity='0.8'
+        strokeWidth="1"
+        opacity="0.8"
       />
     </Svg>
   );
 }
-const StatScreen = () => {
+function StatScreen() {
   const navigation = useNavigation();
   return (
     <ScrollView style={{ height: '100%' }}>
@@ -322,9 +329,9 @@ const StatScreen = () => {
           <View style={styles.topContainer}>
             <Ionicons
               style={styles.tinyLogo}
-              name='account-box'
+              name="account-box"
               size={45}
-              color='black'
+              color="black"
             />
             <Text style={styles.userName}> Billy Bob Jones </Text>
             <Text style={styles.level}> Lv. 12 </Text>
@@ -333,40 +340,64 @@ const StatScreen = () => {
           <View style={styles.numberContainer}>
             <View style={styles.equipmentContainer}>
               <View style={styles.equipment}>
-                <Ionicons name='sword' size={70} color='black' />
+                <Ionicons name="sword" size={70} color="black" />
               </View>
               <View style={styles.equipment}>
-                <Ionicons name='tshirt-crew' size={70} color='black' />
+                <Ionicons name="tshirt-crew" size={70} color="black" />
               </View>
               <View style={styles.equipment}>
-                <Ionicons name='ring' size={70} color='black' />
+                <Ionicons name="ring" size={70} color="black" />
               </View>
             </View>
             <View style={styles.avatarContainer}>
               <Ionicons
                 style={styles.icons}
-                name='account-box'
+                name="account-box"
                 size={150}
-                color='black'
+                color="black"
               />
               <View style={styles.statsContainer}>
                 <View style={styles.stat}>
-                  <Text style={styles.statText}> SKS: {stats.streak}</Text>
+                  <Text style={styles.statText}>
+                    {' '}
+                    SKS:
+                    {stats.streak}
+                  </Text>
                 </View>
                 <View style={styles.stat}>
-                  <Text style={styles.statText}> WIS: {stats.wisdom}</Text>
+                  <Text style={styles.statText}>
+                    {' '}
+                    WIS:
+                    {stats.wisdom}
+                  </Text>
                 </View>
                 <View style={styles.stat}>
-                  <Text style={styles.statText}> STR: {stats.strength}</Text>
+                  <Text style={styles.statText}>
+                    {' '}
+                    STR:
+                    {stats.strength}
+                  </Text>
                 </View>
                 <View style={styles.stat}>
-                  <Text style={styles.statText}> CHA: {stats.charisma}</Text>
+                  <Text style={styles.statText}>
+                    {' '}
+                    CHA:
+                    {stats.charisma}
+                  </Text>
                 </View>
                 <View style={styles.stat}>
-                  <Text style={styles.statText}> MP: {stats.magic}</Text>
+                  <Text style={styles.statText}>
+                    {' '}
+                    MP:
+                    {stats.magic}
+                  </Text>
                 </View>
                 <View style={styles.stat}>
-                  <Text style={styles.statText}> HP: {stats.health}</Text>
+                  <Text style={styles.statText}>
+                    {' '}
+                    HP:
+                    {stats.health}
+                  </Text>
                 </View>
               </View>
             </View>
@@ -414,13 +445,13 @@ const StatScreen = () => {
 
             <View style={styles.equipmentContainer}>
               <View style={styles.equipment}>
-                <Ionicons name='shield-star' size={70} color='black' />
+                <Ionicons name="shield-star" size={70} color="black" />
               </View>
               <View style={styles.equipment}>
-                <Ionicons name='wizard-hat' size={70} color='black' />
+                <Ionicons name="wizard-hat" size={70} color="black" />
               </View>
               <View style={styles.equipment}>
-                <Ionicons name='shoe-sneaker' size={70} color='black' />
+                <Ionicons name="shoe-sneaker" size={70} color="black" />
               </View>
             </View>
           </View>
@@ -429,7 +460,7 @@ const StatScreen = () => {
       </View>
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
