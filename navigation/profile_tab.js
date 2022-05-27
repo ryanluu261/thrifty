@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useWindowDimensions } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-
 import { createStackNavigator } from '@react-navigation/stack';
 import RewardList from '../components/reward_list';
 import StatScreen from '../components/stat_screen';
