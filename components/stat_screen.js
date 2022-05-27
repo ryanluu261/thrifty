@@ -448,7 +448,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+    marginHorizontal: 15,
     borderBottomColor: 'black',
     borderBottomWidth: 5,
   },
@@ -497,6 +497,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     height: 75,
+    paddingHorizontal: 5,
   },
   equipmentContainer: {
     // backgroundColor: '#ffad15',

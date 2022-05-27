@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Ionicons from 'react-native-vector-icons';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import About from '../components/about';
+import { createStackNavigator } from '@react-navigation/stack';
 import SearchTab from './search_tab';
 import HomeTab from './home_tab';
 import GroupTab from './groups_tab';
@@ -12,6 +13,7 @@ import ProfileTab from './profile_tab';
 import QuestTab from './quest_tab';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 function MainTabBar() {
   return (
@@ -43,18 +45,32 @@ function MainTabBar() {
             );
           },
         })}>
-        <Tab.Screen name='Home' component={HomeTab} />
-        <Tab.Screen name='Search' component={SearchTab} />
-        <Tab.Screen name='Quest' component={QuestTab} />
-        <Tab.Screen name='Groups' component={GroupTab} />
-        <Tab.Screen name='Profile' component={ProfileTab} />
+        <Stack.Screen name='Home' options={headerStyle} component={HomeTab} />
+        <Stack.Screen
+          name='Search'
+          options={headerStyle}
+          component={SearchTab}
+        />
+        <Stack.Screen name='Quest' options={headerStyle} component={QuestTab} />
+        <Stack.Screen
+          name='Groups'
+          options={{
+            headerShown: false,
+          }}
+          component={GroupTab}
+        />
+        <Stack.Screen
+          name='Profile'
+          options={headerStyle}
+          component={ProfileTab}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
 const MyTheme = {
-  dark: false,
+  dark: true,
   colors: {
     primary: '#FFFFFF',
     background: 'rgb(242, 242, 242)',
@@ -65,4 +81,17 @@ const MyTheme = {
   },
 };
 
+const headerStyle = {
+  headerShown: true,
+  headerStyle: {
+    backgroundColor: '#FFCC15',
+    height: 90,
+    elevation: 10,
+    borderColor: '#000000',
+    opacity: 1,
+  },
+  headerTitleStyle: {
+    color: '#000000',
+  },
+};
 export default MainTabBar;
