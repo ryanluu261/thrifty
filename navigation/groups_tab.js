@@ -12,7 +12,11 @@ function GroupsTab() {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Groups' component={GroupsList} />
-      <Stack.Screen name='GroupsDetail' component={GroupsDetail} />
+      <Stack.Screen
+        name='GroupsDetail'
+        component={GroupsDetail}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

@@ -10,7 +10,7 @@ const GroupsList = () => {
     {
       name: "O'hana",
       description: 'Means family',
-      users: [
+      members: [
         {
           name: 'Ryan',
           avatar: '',
@@ -28,7 +28,7 @@ const GroupsList = () => {
     {
       name: 'Sunrikerss',
       description: 'Sunrike every Sunday',
-      users: [
+      members: [
         {
           name: 'Ke Lou',
           avatar: '',
@@ -42,7 +42,7 @@ const GroupsList = () => {
     {
       name: 'Presentation group',
       description: "Group for Tim's birthday",
-      users: [
+      members: [
         {
           name: 'A',
           avatar: '',
@@ -68,7 +68,7 @@ const GroupsList = () => {
     {
       name: 'Go upvote my post b**ches',
       description: 'Timmy’s turn to rank first this week',
-      users: [
+      members: [
         {
           name: 'Tim',
           avatar: '',
@@ -104,7 +104,7 @@ const GroupsList = () => {
         <Text style={styles.groupName}>{group.name}</Text>
         <Text style={styles.groupDescrip}>{group.description}</Text>
         <Text style={styles.groupNum}>
-          {group.users.length.toString()} members
+          {group.members.length.toString()} members
         </Text>
       </View>
       <Ionicons name='right' style={styles.groupIcon} />

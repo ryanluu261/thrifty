@@ -31,8 +31,9 @@ const renderScene = SceneMap({
 const renderTabBar = (props) => (
   <TabBar
     {...props}
-    indicatorStyle={{ backgroundColor: 'white' }}
-    style={{ backgroundColor: '#ffad15' }}
+    labelStyle={{ color: 'black' }}
+    indicatorStyle={{ backgroundColor: 'black' }}
+    style={{ backgroundColor: '#ffad15', color: 'black' }}
   />
 );
 
