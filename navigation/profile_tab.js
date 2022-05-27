@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,20 +9,22 @@ import RewardDetail from '../components/reward_detail';
 
 const Stack = createStackNavigator();
 
-const RewardScreen = () => (
-  <Stack.Navigator>
-    <Stack.Screen
-      name='RewardList'
-      component={RewardList}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen
-      name='RewardDetail'
-      component={RewardDetail}
-      options={{ headerShown: false }}
-    />
-  </Stack.Navigator>
-);
+function RewardScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="RewardList"
+        component={RewardList}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RewardDetail"
+        component={RewardDetail}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 const renderScene = SceneMap({
   first: StatScreen,
@@ -42,7 +44,7 @@ export default function ProfileTab() {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Stats' },
-    { key: 'second', title: 'Rewards' },
+    { key: 'second', title: 'Inventory' },
   ]);
 
   return (
