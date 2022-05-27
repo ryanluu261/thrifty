@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text, Image,
+  StyleSheet, View, Text,
 } from 'react-native';
 import Svg, { Polygon, Line, Text as SvgText } from 'react-native-svg';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
