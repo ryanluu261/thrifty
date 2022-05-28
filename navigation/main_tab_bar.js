@@ -19,7 +19,7 @@ function MainTabBar() {
   return (
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
-        initialRouteName='Home'
+        initialRouteName="Home"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => {
             let iconName;
