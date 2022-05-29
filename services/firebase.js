@@ -1,5 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+import {
+  getStorage, ref, uploadBytes, getDownloadUrl,
+} from 'firebase/storage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,3 +21,26 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+
+const uploadImage = (image, callback) => {
+  if (image == null) {
+    return;
+  }
+  const imageRef = ref(storage, 'images/random_name_here');
+  uploadBytes(imageRef, image)
+    .then((res) => {
+      imageRef.getDownloadUrl()
+        .then((url) => {
+          callback(url);
+        })
+        .catch((e) => {
+          alert(`Error Code: ${e.code} ${e.message}`);
+        });
+    })
+    .catch((error) => {
+      alert(`Error Code: ${error.code} ${error.message}`);
+    });
+};
+
+export default uploadImage;

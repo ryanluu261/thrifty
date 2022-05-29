@@ -10,19 +10,22 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Image, TouchableOpacity,
+  StyleSheet, View, Image, TouchableOpacity, Text,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import { StackActions } from '@react-navigation/native';
+import uploadImage from '../services/firebase';
 
 class ImagePreview extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: this.props.route.params.image,
+      imageUrl: '',
     };
     this.handleCheckButton = this.handleCheckButton.bind(this);
     this.handleCrossButton = this.handleCrossButton.bind(this);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
   // go back to the first page
@@ -38,6 +41,14 @@ class ImagePreview extends Component {
   handleCrossButton(e) {
     const popAction = StackActions.pop(1);
     this.props.navigation.dispatch(popAction);
+  }
+
+  handleImageUpload(image) {
+    uploadImage(image, (url) => {
+      if (url) {
+        this.setState({ imageUrl: url });
+      }
+    });
   }
 
   render() {
@@ -56,8 +67,18 @@ class ImagePreview extends Component {
             style={styles.button}
             onPress={this.handleCheckButton}
           >
-            <Ionicons name="check" size={85} style={styles.post_icon} />
+            <Ionicons
+              name="check"
+              size={85}
+              style={styles.post_icon}
+              onPress={this.handleImageUpload}
+            />
           </TouchableOpacity>
+          <Text>
+            Image url is:
+            {' '}
+            {this.state.imageUrl}
+          </Text>
         </View>
       </View>
     );
