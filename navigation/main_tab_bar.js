@@ -18,6 +18,7 @@ import userGet from '../services/sidequestUser-api';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
 class MainTabBar extends Component {
   constructor(props) {
     super(props);

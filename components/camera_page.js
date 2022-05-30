@@ -37,7 +37,8 @@ class CameraPage extends Component {
 
   async takePicture() {
     if (this.camera) {
-      const photo = await this.camera.current.takePictureAsync(null);
+      const options = { quality: 0.2 };
+      const photo = await this.camera.current.takePictureAsync(options);
       this.setState({
         image: photo,
       });
