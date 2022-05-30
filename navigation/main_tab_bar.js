@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Ionicons from 'react-native-vector-icons';
+// eslint-disable-next-line import/no-unresolved
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import About from '../components/about';
 import SearchTab from './search_tab';

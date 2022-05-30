@@ -1,41 +1,58 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text,
+  StyleSheet, View, Text, ScrollView,
 } from 'react-native';
+import { fetchDailyQuests } from '../actions/index';
 
 class QuestTab extends Component {
+  // make an async call to the server to get the daily quest
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      dailyQuests: [],
+    };
+  }
+
+  async componentDidMount() {
+    await this.props.fetchDailyQuests();
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <Text style={styles.titleText}>
-            Quests
-          </Text>
-        </View>
-        <View style={styles.topwrapper}>
-          <View style={styles.header}>
-            <Text style={styles.boldText}>
-              Current quest for today:
+      <ScrollView style={styles.scroll}>
+        <View style={styles.container}>
+          <View style={styles.title}>
+            <Text style={styles.titleText}>
+              Quests
             </Text>
           </View>
-          <View style={styles.body}>
-            <Text style={styles.bodyText}>
-              Go on a sunrike with your friends
+          <View style={styles.topwrapper}>
+            <View style={styles.header}>
+              <Text style={styles.boldText}>
+                Current quest for today:
+              </Text>
+            </View>
+            <View style={styles.body}>
+              <Text style={styles.bodyText}>
+                {this.state.dailyQuest}
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.titleTextTwo}>
+            Quests your friends assigned:
+          </Text>
+          <View style={styles.friendTask}>
+            <Text style={styles.friendBodyTitle}>
+              From your group &quot;blank&quot;:
+            </Text>
+            <Text style={styles.friendBodyText}>
+              The task is blank
             </Text>
           </View>
         </View>
-        <Text style={styles.titleTextTwo}>
-          Quests your friends assigned:
-        </Text>
-        <View style={styles.friendTask}>
-          <Text style={styles.friendBodyTitle}>
-            From your group &quot;blank&quot;:
-          </Text>
-          <Text style={styles.friendBodyText}>
-            The task is blank
-          </Text>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }
