@@ -21,18 +21,6 @@ class NewPost extends Component {
     this.handleCameraClick = this.handleCameraClick.bind(this);
   }
 
-  // check if it's returning to this element or launched for the first time.
-  componentDidMount() {
-    try {
-      const { coverUrl } = this.props.route.params;
-      if (coverUrl) {
-        this.setState({ coverUrl });
-      }
-    } catch (error) {
-      // do nothing here
-    }
-  }
-
   async handleCameraClick() {
     const { status } = await Camera.requestCameraPermissionsAsync();
 
@@ -65,7 +53,9 @@ class NewPost extends Component {
           <Text style={styles.title}>Welcome, Username</Text>
           <Text style={styles.title}>Image goes here</Text>
         </View> */}
-        { coverUrl && <Image source={{ uri: coverUrl }} style={{ flex: 1 }} />}
+        { coverUrl == null ? (
+          <Image source={{ uri: 'https://facebook.github.io/react/logo-og.png' }} />
+        ) : (<Image source={{ uri: coverUrl }} style={{ flex: 1 }} />)}
       </View>
     );
   }

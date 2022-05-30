@@ -24,14 +24,8 @@ class ImagePreview extends Component {
       image: this.props.route.params.image,
       imageUrl: '',
     };
-    this.handleCheckButton = this.handleCheckButton.bind(this);
     this.handleCrossButton = this.handleCrossButton.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
-  }
-
-  // go back to the first page
-  handleCheckButton(e) {
-    this.props.navigation.popToTop();
   }
 
   // go back to the first page
@@ -70,7 +64,6 @@ class ImagePreview extends Component {
             );
           },
         );
-        // alert('url is: ', url);
       }
     });
   }
@@ -89,13 +82,12 @@ class ImagePreview extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            onPress={this.handleCheckButton}
+            onPress={this.handleImageUpload}
           >
             <Ionicons
               name="check"
               size={85}
               style={styles.post_icon}
-              onPress={this.handleImageUpload}
             />
           </TouchableOpacity>
         </View>

@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import {
   getStorage, ref, uploadBytes, getDownloadURL,
 } from 'firebase/storage';
-import randomstring from 'randomstring';
+// import randomstring from 'randomstring';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBCJ0EIhSEVHNZITfzwVNumrc21-_uXqjM',
