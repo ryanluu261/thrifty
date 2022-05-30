@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {
   getStorage, ref, uploadBytes, getDownloadURL,
 } from 'firebase/storage';
+import randomstring from 'randomstring';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyBCJ0EIhSEVHNZITfzwVNumrc21-_uXqjM',
   authDomain: 'firenotes-44351.firebaseapp.com',
@@ -25,10 +24,13 @@ const uploadImage = (image, callback) => {
   if (image == null) {
     return;
   }
-  const imageRef = ref(storage, 'images/random_name_here');
+
+  // const filename = randomstring.generate();
+  // const imageRef = ref(storage, `images/${filename}`);
+  const imageRef = ref(storage, 'images/testname');
   uploadBytes(imageRef, image)
     .then((res) => {
-      imageRef.getDownloadURL()
+      getDownloadURL(imageRef)
         .then((url) => {
           callback(url);
         })

@@ -15,9 +15,22 @@ class NewPost extends Component {
     super(props);
     this.state = {
       image: null,
+      coverUrl: null,
     };
 
     this.handleCameraClick = this.handleCameraClick.bind(this);
+  }
+
+  // check if it's returning to this element or launched for the first time.
+  componentDidMount() {
+    try {
+      const { coverUrl } = this.props.route.params;
+      if (coverUrl) {
+        this.setState({ coverUrl });
+      }
+    } catch (error) {
+      // do nothing here
+    }
   }
 
   async handleCameraClick() {
@@ -32,6 +45,7 @@ class NewPost extends Component {
 
   render() {
     const { image } = this.state;
+    const { coverUrl } = this.state;
 
     return (
       <View style={styles.container}>
@@ -46,12 +60,12 @@ class NewPost extends Component {
             </View>
           </View>
         </TouchableOpacity>
-        {/*
-        <View>
+
+        {/* <View>
           <Text style={styles.title}>Welcome, Username</Text>
           <Text style={styles.title}>Image goes here</Text>
-        </View>
-        {image && <Image source={{ uri: image }} style={{ flex: 1 }} />} */}
+        </View> */}
+        { coverUrl && <Image source={{ uri: coverUrl }} style={{ flex: 1 }} />}
       </View>
     );
   }

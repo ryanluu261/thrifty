@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // Image Preview
 // Generates an image preview
 // Click cross for go back
@@ -30,11 +31,7 @@ class ImagePreview extends Component {
 
   // go back to the first page
   handleCheckButton(e) {
-    this.props.navigation.popToTop(
-      {
-        image: this.state.image,
-      },
-    );
+    this.props.navigation.popToTop();
   }
 
   // go back to the first page
@@ -44,6 +41,7 @@ class ImagePreview extends Component {
   }
 
   // reference: https://stackoverflow.com/questions/70194396/firebase-storage-uploads-file-as-9b-file
+  // convert local image into a blob and upload to firebase storage.
   async handleImageUpload() {
     const blob = await new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -58,12 +56,21 @@ class ImagePreview extends Component {
       xhr.open('GET', this.state.image.uri, true);
       xhr.send(null);
     });
-    // const response = await fetch(this.state.image.uri);
-    // const { blob } = response;
 
     uploadImage(blob, (url) => {
       if (url) {
-        this.setState({ imageUrl: url });
+        this.setState(
+          { imageUrl: url },
+          () => {
+            this.props.navigation.navigate(
+              'NewPost',
+              {
+                coverUrl: url,
+              },
+            );
+          },
+        );
+        // alert('url is: ', url);
       }
     });
   }
@@ -91,11 +98,6 @@ class ImagePreview extends Component {
               onPress={this.handleImageUpload}
             />
           </TouchableOpacity>
-          <Text>
-            Image url is:
-            {' '}
-            {this.state.imageUrl}
-          </Text>
         </View>
       </View>
     );
