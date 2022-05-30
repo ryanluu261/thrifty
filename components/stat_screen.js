@@ -14,7 +14,7 @@ class StatScreen extends Component {
   constructor(props){
   super(props);
   this.state = {
-    id: '6294649075695d2c48f4b44d',
+    id: '6293e560ec3bf1362cbeef1c',
     loop: true,
     resetAfterFinish: false,
     fps: '16',
@@ -39,15 +39,15 @@ componentDidMount() {
   fetchData() {
    userGet(this.state.id)
       .then((responseData) => {
-      console.log(responseData);
+      // console.log(responseData);
         this.setState({
           user: responseData,
           stats: responseData.stats,
         });
         // stats = responseData.stats;
       // console.log(stats);
-      console.log("stat screen log");
-      console.log(responseData);
+      // console.log("stat screen log");
+      // console.log(responseData);
       }).catch((error) => {
         console.log(error);
       });
