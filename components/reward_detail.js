@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const RewardDetail = (props) => {
+function RewardDetail(props) {
   const { route } = props;
   const { reward } = route.params;
 
@@ -18,7 +20,8 @@ const RewardDetail = (props) => {
         {/* cancel button */}
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('RewardList')}>
+          onPress={() => navigation.navigate('RewardList')}
+        >
           <Text style={{ color: 'white' }}>Cancel</Text>
         </TouchableOpacity>
         {/* Continue button */}
@@ -28,7 +31,7 @@ const RewardDetail = (props) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

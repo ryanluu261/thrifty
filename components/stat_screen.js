@@ -1,19 +1,209 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text,
+  StyleSheet, View, Text, Image, Button,FlatList,
 } from 'react-native';
 import Svg, { Polygon, Line, Text as SvgText } from 'react-native-svg';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
+import SpriteSheet from 'rn-sprite-sheet';
+import userGet from '../services/sidequestUser-api';
+
+class StatScreen extends Component {
+  constructor(props){
+  super(props);
+  this.state = {
+    id: '6294649075695d2c48f4b44d',
+    loop: true,
+    resetAfterFinish: false,
+    fps: '16',
+    stats: {
+      wisdom: 10,
+      strength: 40,
+      charisma: 10,
+      magic: 41,
+      health: 10,
+      streak: 7,
+    },
+    user: []
+  };
+  }
+
+componentDidMount() {
+  this.play('idle');
+  // console.log(this.state.id)
+  this.fetchData();
+  console.log("component did mount")
+  console.log(this.state.user)
+}
+
+  // ------------ put fetchData here! -------------//
+  fetchData() {
+   userGet(this.state.id)
+      .then((responseData) => {
+      console.log(responseData);
+        this.setState({
+          user: responseData,
+          stats: responseData.stats,
+        });
+        // stats = responseData.stats;
+      // console.log(stats);
+      console.log("stat screen log");
+      console.log(responseData);
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+renderUser(user) {
+    return (
+        <View>
+              <Text style={styles.title}>balls</Text>
+        </View>
+    );
+  }
+
+play = (type) => {
+  const { fps, loop, resetAfterFinish } = this.state;
+
+  this.mummy.play({
+    type,
+    fps: Number(fps),
+    loop,
+    resetAfterFinish,
+    onFinish: () => console.log('hi'),
+  });
+};
+
+stop = () => {
+  this.mummy.stop(() => console.log('stopped'));
+};
+
+
+  render() {
+    // const { fps, loop, resetAfterFinish } = this.state;
+    console.log('render log')
+    console.log((this.state.stats))
+    return (
+<View>
+      <ScrollView style={{ height: '100%' }}>
+        <View style={styles.container}>
+          <View style={styles.character} >
+          <Text style={styles.header}>Character: {this.state.user.userName}</Text>
+            <View style={styles.statContainer}>
+            <View style={styles.numberContainer}>
+              <View style={styles.equipmentContainer}>
+                <View style={styles.equipment}>
+                  <Ionicons name="sword" size={45} color="black" />
+                </View>
+                <View style={styles.equipment}>
+                  <Ionicons name="tshirt-crew" size={45} color="black" />
+                </View>
+                <View style={styles.equipment}>
+                  <Ionicons name="ring" size={45} color="black" />
+                </View>
+              </View>
+              <View style={styles.avatarContainer}>
+                {/* <Image
+                  style={styles.icons}
+                  source={{ uri: user.profilePic }}
+                /> */}
+                <SpriteSheet
+                ref={(ref) => (this.mummy = ref)}
+                source={require('../assets/Idle.png')}
+                columns={2}
+                rows={4}
+                height={250} // set either, none, but not both
+                width={250}
+                frameHeight={50} // manually set size of your sprite
+                frameWidth={50} // overrides auto calculation of frame size based on height, width, columns, and rows.
+                offsetX={50}
+                offsetY={10}
+                animations={{
+                  idle: [0, 1, 2, 3, 4, 5, 6, 7],
+                  // appear: Array.from({ length: 15 }, (v, i) => i + 18),
+                  // die: Array.from({ length: 21 }, (v, i) => i + 33),
+                }}
+              />
+              </View>
+
+              <View style={styles.equipmentContainer}>
+                <View style={styles.equipment}>
+                  <Ionicons name="shield-star" size={45} color="black" />
+                </View>
+                <View style={styles.equipment}>
+                  <Ionicons name="wizard-hat" size={45} color="black" />
+                </View>
+                <View style={styles.equipment}>
+                  <Ionicons name="shoe-sneaker" size={45} color="black" />
+                </View>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.statsContainer}>
+            <View style={styles.stat}>
+              <Text style={styles.statDesciText}>
+                Streak:
+              </Text>
+              <Text style={styles.statText}> {stats.streak}</Text>
+            </View>
+            <View style={styles.stat}>
+              <Text style={styles.statDesciText}>
+                Wisdom:
+              </Text>
+              <Text style={styles.statText}> {this.state.stats.wisdom}</Text>
+            </View>
+            <View style={styles.stat}>
+              <Text style={styles.statDesciText}>
+                Strength:
+              </Text>
+            <Text style={styles.statText}> {this.state.stats.wisdom}</Text>
+            </View>
+            <View style={styles.stat}>
+              <Text style={styles.statDesciText}>
+                Charisma:  
+              </Text>
+              <Text style={styles.statText}> {this.state.stats.wisdom}</Text>
+            </View>
+            <View style={styles.stat}>
+              <Text style={styles.statDesciText}>
+                Magic:
+              </Text>
+          <Text style={styles.statText}> {this.state.stats.magic}</Text>
+            </View>
+            <View style={styles.stat}>
+              <Text style={styles.statDesciText}>
+                Health:
+              </Text>
+    <Text style={styles.statText}> {this.state.stats.health}</Text>
+            </View>
+          </View>
+<View style={styles.pentagon}>
+          {pentagonStat()}
+</View>
+          <Image
+            style={styles.image}
+            source={{ uri: user.profilePic }}
+          />
+        </View>
+        </View>
+      </ScrollView>
+</View>
+    );
+  }
+}
 
 const stats = {
-  wisdom: 50,
+  wisdom: 10,
   strength: 40,
-  charisma: 25,
-  magic: 40,
-  health: 50,
+  charisma: 10,
+  magic: 41,
+  health: 10,
   streak: 7,
+};
+
+const user = {
+  profilePic: 'https://i.ibb.co/2FhFgSB/zhoucaini.png',
 };
 
 //  wisdom
@@ -179,7 +369,7 @@ const innerPent3 = '150,125 126,142 135,170 165,170 174,142';
 
 function pentagonStat() {
   return (
-    <Svg height="250" width="275">
+    <Svg height="300" width="300">
       <Polygon
         points={bigPent}
         // "0,45 50,10 100,45 80,100 20,100"
@@ -320,147 +510,6 @@ function pentagonStat() {
     </Svg>
   );
 }
-function StatScreen() {
-  const navigation = useNavigation();
-  return (
-    <ScrollView style={{ height: '100%' }}>
-      <View style={styles.container}>
-        <View style={styles.statContainer}>
-          <View style={styles.topContainer}>
-            <Ionicons
-              style={styles.tinyLogo}
-              name="account-box"
-              size={45}
-              color="black"
-            />
-            <Text style={styles.userName}> Billy Bob Jones </Text>
-            <Text style={styles.level}> Lv. 12 </Text>
-          </View>
-
-          <View style={styles.numberContainer}>
-            <View style={styles.equipmentContainer}>
-              <View style={styles.equipment}>
-                <Ionicons name="sword" size={70} color="black" />
-              </View>
-              <View style={styles.equipment}>
-                <Ionicons name="tshirt-crew" size={70} color="black" />
-              </View>
-              <View style={styles.equipment}>
-                <Ionicons name="ring" size={70} color="black" />
-              </View>
-            </View>
-            <View style={styles.avatarContainer}>
-              <Ionicons
-                style={styles.icons}
-                name="account-box"
-                size={150}
-                color="black"
-              />
-              <View style={styles.statsContainer}>
-                <View style={styles.stat}>
-                  <Text style={styles.statText}>
-                    {' '}
-                    SKS:
-                    {stats.streak}
-                  </Text>
-                </View>
-                <View style={styles.stat}>
-                  <Text style={styles.statText}>
-                    {' '}
-                    WIS:
-                    {stats.wisdom}
-                  </Text>
-                </View>
-                <View style={styles.stat}>
-                  <Text style={styles.statText}>
-                    {' '}
-                    STR:
-                    {stats.strength}
-                  </Text>
-                </View>
-                <View style={styles.stat}>
-                  <Text style={styles.statText}>
-                    {' '}
-                    CHA:
-                    {stats.charisma}
-                  </Text>
-                </View>
-                <View style={styles.stat}>
-                  <Text style={styles.statText}>
-                    {' '}
-                    MP:
-                    {stats.magic}
-                  </Text>
-                </View>
-                <View style={styles.stat}>
-                  <Text style={styles.statText}>
-                    {' '}
-                    HP:
-                    {stats.health}
-                  </Text>
-                </View>
-              </View>
-            </View>
-
-            {/* <Text style={styles.statText}> Stats: </Text>
-              <Text style={styles.statText}>
-                {' '}
-                Current Streak:
-                {' '}
-                {stats.streak}
-              </Text>
-              <Text style={styles.statText}>
-                {' '}
-                wisdom:
-                {' '}
-                {stats.wisdom}
-              </Text>
-              <Text style={styles.statText}>
-                {' '}
-                strength:
-                {' '}
-                {stats.strength}
-              </Text>
-              <Text style={styles.statText}>
-                {' '}
-                charisma:
-                {' '}
-                {stats.charisma}
-                {' '}
-              </Text>
-              <Text style={styles.statText}>
-                {' '}
-                magic:
-                {' '}
-                {stats.magic}
-                {' '}
-              </Text>
-              <Text style={styles.statText}>
-                {' '}
-                health:
-                {' '}
-                {stats.health}
-                {' '}
-              </Text> */}
-
-            <View style={styles.equipmentContainer}>
-              <View style={styles.equipment}>
-                <Ionicons name="shield-star" size={70} color="black" />
-              </View>
-              <View style={styles.equipment}>
-                <Ionicons name="wizard-hat" size={70} color="black" />
-              </View>
-              <View style={styles.equipment}>
-                <Ionicons name="shoe-sneaker" size={70} color="black" />
-              </View>
-            </View>
-          </View>
-        </View>
-        {pentagonStat()}
-      </View>
-    </ScrollView>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -469,19 +518,20 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     fontFamily: 'Cochin',
-    marginTop: 20,
+    // marginTop: 20,
+    // backgroundColor: 'white',
   },
   statContainer: {
     // flex: 1,
-    backgroundColor: '#FFCC15',
-    height: 400,
-    width: '95%',
-    borderRadius: 5,
+    // backgroundColor: '#ffad15',
+    height: 210,
+    width: '100%',
+    // borderRadius: 5,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    borderBottomColor: 'black',
-    borderBottomWidth: 5,
+    // borderBottomColor: 'black',
+    // borderBottomWidth: 5,
   },
   numberContainer: {
     flexDirection: 'row',
@@ -493,14 +543,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 10,
     alignItems: 'flex-end',
-    fontFamily: 'Cochin',
+    // fontFamily: 'Cochin',
+  },
+  statDesciText: {
+    // fontFamily: 'Cochin',
+    // color: 'grey'
+    // fontWeight: 'bold',
+    fontSize: 17.5,
+    // padding: 2,
   },
   statText: {
-    fontFamily: 'Cochin',
+    fontSize: 17.5,
+    // padding: 2,
     fontWeight: 'bold',
-    fontSize: 10,
-    padding: 2,
-  },
+},
   userName: {
     marginTop: 10,
     marginLeft: 10,
@@ -517,7 +573,7 @@ const styles = StyleSheet.create({
     width: 50,
     marginLeft: 10,
     marginTop: 10,
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
   },
@@ -531,31 +587,24 @@ const styles = StyleSheet.create({
   },
   equipmentContainer: {
     // backgroundColor: '#ffad15',
-    height: 300,
+    height: 200,
     width: 100,
-    // borderColor: 'white',
-    // borderWidth: 2,
-    // borderRadius: 5,
     margin: 5,
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   avatarContainer: {
-    backgroundColor: '#ffad15',
+    marginTop: 35,
+    // backgroundColor: '#ffad15',
     height: 150,
     width: 150,
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 5,
-    margin: 5,
-    alignSelf: 'center',
   },
   equipment: {
-    backgroundColor: '#ffad15',
-    height: 75,
-    width: 75,
-    borderColor: 'white',
+    backgroundColor: '#ffcc15',
+    height: 50,
+    width: 50,
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
   },
@@ -564,21 +613,39 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,  
+    width: '100%',
   },
   stat: {
-    backgroundColor: '#ffad15',
-    height: 20,
-    width: 45,
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 5,
-    margin: 1,
+    // backgroundColor: '#ffad15',
+    // : 'grey',
+    height: 25,
+    width: '100%',
+    margin: 2.3,
+    flexDirection: 'row',
+    justifyContent: "space-between"
   },
   icons: {
     width: '100%',
     height: '100%',
+    borderRadius: 5,
   },
+  character: {
+  margin: 20,
+},
+header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+pentagon: {
+  // backgroundColor: '#ffad15',
+  alignItems: 'center',
+},
+listView: {
+  height: 200,
+  backgroundColor: 'blue',
+},
 });
 
 export default StatScreen;
