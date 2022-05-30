@@ -1,34 +1,59 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet, View, Text, Image,
-} from 'react-native';
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from 'react';
+import { useWindowDimensions } from 'react-native';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import { createStackNavigator } from '@react-navigation/stack';
+import RewardList from '../components/reward_list';
+import StatScreen from '../components/stat_screen';
+import RewardDetail from '../components/reward_detail';
 
-class ProfileTab extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
-        />
-        <Text>
-          This is the Profile Tab
-        </Text>
-      </View>
-    );
-  }
+const Stack = createStackNavigator();
+
+function RewardScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="RewardList"
+        component={RewardList}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RewardDetail"
+        component={RewardDetail}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  image: {
-    width: 400,
-    height: 300,
-  },
+const renderScene = SceneMap({
+  first: StatScreen,
+  second: RewardScreen,
 });
+const renderTabBar = (props) => (
+  <TabBar
+    {...props}
+    indicatorStyle={{ backgroundColor: 'white' }}
+    style={{ backgroundColor: '#ffad15' }}
+  />
+);
 
-export default ProfileTab;
+export default function ProfileTab() {
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'first', title: 'Stats' },
+    { key: 'second', title: 'Inventory' },
+  ]);
+
+  return (
+    <TabView
+      renderTabBar={renderTabBar}
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+    />
+  );
+}
