@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import {
-  View, Text, StyleSheet, Button, Modal,
+  View, Text, StyleSheet, Pressable, Modal,
 } from 'react-native';
 
 class ModalTab extends React.Component {
@@ -20,12 +20,13 @@ class ModalTab extends React.Component {
           <View style={styles.modal}>
             <View style={styles.modalContent}>
               <Text style={styles.modalText}>
-                Welcome Syed! Today&apos;s quest is going on a sunrike!
+                Welcome Zhoucai! Today&apos;s quest is going on a sunrike!
               </Text>
-              <Button color="#000000"
-                title="ok"
-                onPress={() => this.setState({ modalVisible: false })}
-              />
+              <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
+                <Text style={styles.buttonText}>
+                  OK
+                </Text>
+              </Pressable>
             </View>
           </View>
         </Modal>
@@ -62,6 +63,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 150,
     paddingBottom: 50,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: 'bold',
   },
 
 });

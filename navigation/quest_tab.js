@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text, ScrollView,
+  StyleSheet, View, Text, ScrollView, Pressable, Modal,
 } from 'react-native';
 import { fetchDailyQuests } from '../actions/index';
 
@@ -12,6 +12,7 @@ class QuestTab extends Component {
     super(props);
     this.state = {
       dailyQuests: [],
+      modalVisible: false,
     };
   }
 
@@ -28,7 +29,7 @@ class QuestTab extends Component {
               Quests
             </Text>
           </View>
-          <View style={styles.topwrapper}>
+          <Pressable style={styles.topwrapper} onPress={() => this.setState({ modalVisible: true })}>
             <View style={styles.header}>
               <Text style={styles.boldText}>
                 Current quest for today:
@@ -36,10 +37,25 @@ class QuestTab extends Component {
             </View>
             <View style={styles.body}>
               <Text style={styles.bodyText}>
-                {this.state.dailyQuest}
+                {/* {this.state.dailyQuest} */}
+                Go on a sunrike!
               </Text>
             </View>
-          </View>
+          </Pressable>
+          <Modal visible={this.state.modalVisible} transparent>
+            <View style={styles.modal}>
+              <View style={styles.modalContent}>
+                <Text style={styles.modalText}>
+                  Upload Your Quest Post Here!
+                </Text>
+                <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
+                  <Text style={styles.buttonText}>
+                    Upload
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
           <Text style={styles.titleTextTwo}>
             Quests your friends assigned:
           </Text>
@@ -129,6 +145,40 @@ const styles = StyleSheet.create({
   friendBodyText: {
     padding: 10,
     fontSize: 30,
+    fontWeight: 'bold',
+  },
+  modal: {
+    backgroundColor: '#000000aa',
+    flex: 1,
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    marginTop: 90,
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom: 80,
+    padding: 40,
+    borderRadius: 10,
+    flex: 1,
+  },
+  modalText: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 150,
+    paddingBottom: 50,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+  },
+  buttonText: {
+    color: 'black',
     fontWeight: 'bold',
   },
 

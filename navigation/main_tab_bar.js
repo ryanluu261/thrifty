@@ -73,7 +73,7 @@ const headerStyle = {
   headerShown: true,
   headerStyle: {
     backgroundColor: '#FFCC15',
-    height: 90,
+    height: 50,
     elevation: 10,
     borderColor: '#000000',
     opacity: 1,
