@@ -15,7 +15,10 @@ const user = {
   profilePic: 'https://i.ibb.co/2FhFgSB/zhoucaini.png',
 };
 
-function ProfileTab() {
+function ProfileTab(props) {
+  console.log('profile tab props--------------');
+  console.log(props);
+
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -33,7 +36,7 @@ function ProfileTab() {
           />
         </View>
         <Text style={styles.userName}>
-          Zhoucai Ni
+          {props.route.params.name}
         </Text>
       </View>
       <TabView
