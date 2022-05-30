@@ -17,7 +17,7 @@ class VideoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: 'true facts',
+      query: 'deep ocean',
       isLoading: true,
       dataSource: [],
     };
@@ -28,16 +28,22 @@ class VideoList extends Component {
   // ---------- componentDidMount here! -----------//
   componentDidMount() {
     this.fetchData();
+    console.log('comp did mount');
+    console.log(this.state.dataSource);
+    console.log('comp after mount');
   }
 
   // ------------ put fetchData here! -------------//
   fetchData() {
     youtubeSearch(this.state.query)
       .then((responseData) => {
+        console.log(responseData);
+        // console.log(this.dataSource);
         this.setState({
           dataSource: responseData,
           isLoading: false,
         });
+        // console.log(dataSource);
       }).catch((error) => {
         console.log(error);
       });
@@ -77,6 +83,8 @@ class VideoList extends Component {
   }
 
   render() {
+    console.log('render');
+    console.log(this.state.dataSource);
     if (this.state.isLoading) {
       return this.renderLoadingView();
     }
