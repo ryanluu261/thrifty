@@ -4,7 +4,8 @@ import { initializeApp } from 'firebase/app';
 import {
   getStorage, ref, uploadBytes, getDownloadURL,
 } from 'firebase/storage';
-// import randomstring from 'randomstring';
+import 'react-native-get-random-values';
+import { v4 } from 'uuid';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBCJ0EIhSEVHNZITfzwVNumrc21-_uXqjM',
@@ -25,9 +26,8 @@ const uploadImage = (image, callback) => {
     return;
   }
 
-  // const filename = randomstring.generate();
-  // const imageRef = ref(storage, `images/${filename}`);
-  const imageRef = ref(storage, 'images/testname');
+  const filename = v4();
+  const imageRef = ref(storage, `images/${filename}`);
   uploadBytes(imageRef, image)
     .then((res) => {
       getDownloadURL(imageRef)
