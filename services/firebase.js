@@ -3,10 +3,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {
-  getStorage, ref, uploadBytes, getDownloadUrl,
+  getStorage, ref, uploadBytes, getDownloadURL,
 } from 'firebase/storage';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,7 +28,7 @@ const uploadImage = (image, callback) => {
   const imageRef = ref(storage, 'images/random_name_here');
   uploadBytes(imageRef, image)
     .then((res) => {
-      imageRef.getDownloadUrl()
+      imageRef.getDownloadURL()
         .then((url) => {
           callback(url);
         })

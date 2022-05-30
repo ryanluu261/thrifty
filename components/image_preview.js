@@ -43,8 +43,25 @@ class ImagePreview extends Component {
     this.props.navigation.dispatch(popAction);
   }
 
-  handleImageUpload(image) {
-    uploadImage(image, (url) => {
+  // reference: https://stackoverflow.com/questions/70194396/firebase-storage-uploads-file-as-9b-file
+  async handleImageUpload() {
+    const blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        resolve(xhr.response);
+      };
+      xhr.onerror = (e) => {
+        console.log(e);
+        reject(new TypeError('Request failed'));
+      };
+      xhr.responseType = 'blob';
+      xhr.open('GET', this.state.image.uri, true);
+      xhr.send(null);
+    });
+    // const response = await fetch(this.state.image.uri);
+    // const { blob } = response;
+
+    uploadImage(blob, (url) => {
       if (url) {
         this.setState({ imageUrl: url });
       }
