@@ -26,7 +26,7 @@ const userGet = (id) => {
       .then((response) => {
         // console.log(`${API_URL}/${params.id}`);
         // console.log(response);
-        resolve(response.data[0]);
+        resolve(response.data[1]);
       })
       .catch((error) => {
         console.log(error);

@@ -17,12 +17,12 @@ class StatScreen extends Component {
     resetAfterFinish: false,
     fps: '16',
     stats: {
-      wisdom: 10,
-      strength: 40,
-      charisma: 10,
-      magic: 41,
-      health: 10,
-      streak: 7,
+      wisdom: 0,
+      strength: 0,
+      charisma: 0,
+      magic: 0,
+      health: 0,
+      streak: 0,
     },
     user: []
   };
@@ -30,10 +30,7 @@ class StatScreen extends Component {
 
 componentDidMount() {
   this.play('idle');
-  // console.log(this.state.id)
   this.fetchData();
-  console.log("component did mount")
-  console.log(this.state.user)
 }
 
   // ------------ put fetchData here! -------------//
@@ -145,7 +142,7 @@ stop = () => {
               <Text style={styles.statDesciText}>
                 Streak:
               </Text>
-              <Text style={styles.statText}> {stats.streak}</Text>
+              <Text style={styles.statText}>  n/a </Text>
             </View>
             <View style={styles.stat}>
               <Text style={styles.statDesciText}>
@@ -179,12 +176,8 @@ stop = () => {
             </View>
           </View>
 <View style={styles.pentagon}>
-          {pentagonStat()}
+          {pentagonStat(this.state.stats)}
 </View>
-          <Image
-            style={styles.image}
-            source={{ uri: user.profilePic }}
-          />
         </View>
         </View>
       </ScrollView>
@@ -193,14 +186,19 @@ stop = () => {
   }
 }
 
-const stats = {
-  wisdom: 10,
-  strength: 40,
-  charisma: 10,
-  magic: 41,
-  health: 10,
-  streak: 7,
-};
+
+function pentagonStat(props) {
+
+//   const stats = {
+//   wisdom: 5,
+//   strength: 10,
+//   charisma: 10,
+//   magic: 10,
+//   health: 5,
+//   streak: 5,
+// };
+
+  const stats = props
 
 const user = {
   profilePic: 'https://i.ibb.co/2FhFgSB/zhoucaini.png',
@@ -366,8 +364,6 @@ const statPent = pentagonStr(
 const innerPent1 = '150,75 79,127 106,211 194,211 221,127';
 const innerPent2 = '150,100 102,135 121,190 179,190 198,135';
 const innerPent3 = '150,125 126,142 135,170 165,170 174,142';
-
-function pentagonStat() {
   return (
     <Svg height="300" width="300">
       <Polygon
@@ -503,7 +499,6 @@ function pentagonStat() {
       <Polygon
         points={statPent}
         fill="green"
-        // stroke="purple"
         strokeWidth="1"
         opacity="0.8"
       />
@@ -617,8 +612,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   stat: {
-    // backgroundColor: '#ffad15',
-    // : 'grey',
     height: 25,
     width: '100%',
     margin: 2.3,
