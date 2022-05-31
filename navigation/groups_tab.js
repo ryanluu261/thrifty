@@ -1,34 +1,24 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet, View, Text, Image,
-} from 'react-native';
+import * as React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-class GroupTab extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
-        />
-        <Text>
-          This is the Groups Tab
-        </Text>
-      </View>
-    );
-  }
+import GroupsList from '../components/groups/groups_list';
+import GroupsDetail from '../components/groups/groups_detail';
+
+const Stack = createStackNavigator();
+
+// nest stack navigator to handle two internal views
+// "name" prop is the name of the route
+function GroupsTab() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='Groups' component={GroupsList} />
+      <Stack.Screen
+        name='GroupsDetail'
+        component={GroupsDetail}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  image: {
-    width: 400,
-    height: 300,
-  },
-});
-
-export default GroupTab;
+export default GroupsTab;

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet, View, Text, ScrollView, Pressable, Modal,
 } from 'react-native';
-// import { fetchDailyQuests } from '../services/pullQuest-api';
 
 class QuestTab extends Component {
   // make an async call to the server to get the daily quest
@@ -11,13 +10,9 @@ class QuestTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dailyQuests: [],
+      dailyQuest: props.quest,
       modalVisible: false,
     };
-  }
-
-  async componentDidMount() {
-    await this.props.fetchDailyQuests();
   }
 
   render() {
@@ -37,8 +32,8 @@ class QuestTab extends Component {
             </View>
             <View style={styles.body}>
               <Text style={styles.bodyText}>
-                {/* {this.state.dailyQuest} */}
-                Go on a sunrike!
+                {this.state.dailyQuest}
+                {/* Go on a sunrike! */}
               </Text>
             </View>
           </Pressable>

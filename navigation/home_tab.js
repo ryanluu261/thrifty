@@ -32,7 +32,7 @@ class HomeTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: props.userName,
+      user: props.user,
     };
   }
 
@@ -47,7 +47,7 @@ class HomeTab extends Component {
           <Post style={styles.post} postDetails={postDetails2} />
           <Post style={styles.post} postDetails={postDetails1} />
         </View>
-        <ModalTab initialParams={this.state.userName} />
+        <ModalTab user={this.state.user} />
       </ScrollView>
 
     );

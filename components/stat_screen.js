@@ -581,6 +581,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     height: 75,
+    paddingHorizontal: 5,
   },
   equipmentContainer: {
     // backgroundColor: '#ffad15',

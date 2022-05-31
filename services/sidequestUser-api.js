@@ -10,7 +10,7 @@ const instance = axios.create(
     },
   },
 );
-const API_URL = 'https://sidequest.onrender.com/api/users/';
+const API_URL = 'https://sidequest.onrender.com/api/users';
 // const API_URL = 'http://localhost:9090/api/users';
 
 const userGet = (id) => {
@@ -21,8 +21,8 @@ const userGet = (id) => {
   return new Promise((resolve, reject) => {
     // console.log('get user');
     // console.log(params);
-    console.log(`${API_URL}/:${params.id}`);
-    instance.get(`${API_URL}/:${params.id}`)
+    console.log(`${API_URL}/${params.id}`);
+    instance.get(`${API_URL}/${params.id}`)
       .then((response) => {
         // console.log(`${API_URL}/${params.id}`);
         // console.log(response);

@@ -15,6 +15,7 @@ import GroupTab from './groups_tab';
 import ProfileTab from './profile_tab';
 import QuestTab from './quest_tab';
 import userGet from '../services/sidequestUser-api';
+import questGet from '../services/pullQuest-api';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -23,14 +24,21 @@ class MainTabBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: [],
-      id: '6293e560ec3bf1362cbeef1c',
+      user: '',
+      id: '62955568344a64f0f6811392',
+      questID: '6291214c48ffc29b3b082a4e',
     };
   }
 
   componentDidMount() {
     this.fetchData();
+    this.fetchQuestData();
   }
+
+  // componentDidUpdate() {
+  //   this.fetchData();
+  //   this.fetchQuestData();
+  // }
 
   // ------------ put fetchData here! -------------//
   fetchData() {
@@ -40,6 +48,22 @@ class MainTabBar extends Component {
         console.log(responseData);
         this.setState({
           user: responseData,
+          // quest: responseData,
+        });
+        // console.log('main_tab_bar');
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+  // ------------ put fetchData here! -------------//
+  fetchQuestData() {
+    questGet(this.state.questID)
+      .then((responseData) => {
+        // console.log('main-tab response data----------------');
+        console.log(`${responseData}quest`);
+        this.setState({
+          quest: responseData,
         });
         // console.log('main_tab_bar');
       }).catch((error) => {
@@ -49,7 +73,7 @@ class MainTabBar extends Component {
 
   render() {
     console.log('main tab bar state print----------------');
-    console.log(`${this.state.user}user`);
+    // console.log(`${this.state.user}user`);
     // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
@@ -82,10 +106,12 @@ class MainTabBar extends Component {
           })}
         >
           <Stack.Screen name="Home" options={headerStyle}>
-            { (props) => <HomeTab {...props} userName={this.state.user} />}
+            {(props) => <HomeTab user={this.state.user.name} />}
           </Stack.Screen>
           <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
-          <Stack.Screen name="Quest" options={headerStyle} component={QuestTab} />
+          <Stack.Screen name="Quest" options={headerStyle}>
+            {(props) => <QuestTab quest={this.state.quest.task} />}
+          </Stack.Screen>
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
           <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} screenProps={{ user: 'abc' }} initialParams={this.state.user} />
         </Tab.Navigator>

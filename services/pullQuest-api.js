@@ -9,14 +9,18 @@ const instance = axios.create({
   },
 });
 
-const API_URL = 'https://sidequest.onrender.com/api/dailyquests/all';
+const API_URL = 'https://sidequest.onrender.com/api/dailyquests';
 
-const questGet = () => {
+const questGet = (id) => {
+  const params = {
+    id,
+  };
+
   return new Promise((resolve, reject) => {
-    // console.log('get quest');
+    // console.log('get user');
     // console.log(params);
-    console.log(`${API_URL}`);
-    instance.get(`${API_URL}`)
+    console.log(`${API_URL}/${params.id}`);
+    instance.get(`${API_URL}/${params.id}`)
       .then((response) => {
         // console.log(`${API_URL}/${params.id}`);
         // console.log(response);
@@ -31,22 +35,3 @@ const questGet = () => {
 };
 
 export default questGet;
-
-// export const ACTIO_TYPES = {
-//   FETCH_DAILY_QUESTS: 'FETCH_DAILY_QUESTS',
-// };
-
-// export function fetchDailyQuests() {
-//   return (dispatch) => {
-//     axios.get(`${ROOT_URL}/dailyquests/all`)
-//       .then((response) => {
-//         dispatch({
-//           type: ACTIO_TYPES.FETCH_DAILY_QUESTS,
-//           payload: response.data,
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-// }
