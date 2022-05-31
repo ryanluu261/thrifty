@@ -7,15 +7,15 @@ import {
   ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import RewardDetail from '../components/reward_detail';
+import RewardDetail from './reward_detail';
 
-const RewardList = () => {
+function RewardList() {
   const navigation = useNavigation();
   const [rewardList, setRewardList] = useState([
-    "Auto-complete today's taskkk",
+    'Auto-complete today\'s taskkk',
     'Set task for a friend',
     'Double rewards for any task',
-    "Reroll today's task",
+    'Reroll today\'s task',
     'Hello',
   ]);
 
@@ -25,7 +25,8 @@ const RewardList = () => {
       style={styles.reward}
       onPress={() => {
         navigation.navigate('RewardDetail', { reward });
-      }}>
+      }}
+    >
       <Text style={styles.text}>{reward}</Text>
     </TouchableOpacity>
   ));
@@ -33,12 +34,12 @@ const RewardList = () => {
   return (
     <View style={styles.profile}>
       <Text style={styles.header}>Rewards</Text>
-      <ScrollView style={styles.rewardContainer} horizontal='true'>
+      <ScrollView style={styles.rewardContainer} horizontal="true">
         <View style={{ flexWrap: 'wrap' }}>{rewards}</View>
       </ScrollView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   profile: {

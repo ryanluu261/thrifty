@@ -15,6 +15,7 @@ class NewPost extends Component {
     super(props);
     this.state = {
       image: null,
+      coverUrl: null,
     };
 
     this.handleCameraClick = this.handleCameraClick.bind(this);
@@ -32,6 +33,7 @@ class NewPost extends Component {
 
   render() {
     const { image } = this.state;
+    const { coverUrl } = this.state;
 
     return (
       <View style={styles.container}>
@@ -46,12 +48,14 @@ class NewPost extends Component {
             </View>
           </View>
         </TouchableOpacity>
-        {/*
-        <View>
+
+        {/* <View>
           <Text style={styles.title}>Welcome, Username</Text>
           <Text style={styles.title}>Image goes here</Text>
-        </View>
-        {image && <Image source={{ uri: image }} style={{ flex: 1 }} />} */}
+        </View> */}
+        { coverUrl == null ? (
+          <Image source={{ uri: 'https://facebook.github.io/react/logo-og.png' }} />
+        ) : (<Image source={{ uri: coverUrl }} style={{ flex: 1 }} />)}
       </View>
     );
   }
