@@ -1,9 +1,8 @@
 import * as React from 'react';
 // import { useWindowDimensions } from 'react-native';
-import { SceneMap, TabBar } from 'react-native-tab-view';
+import { TabBar } from 'react-native-tab-view';
 import { createStackNavigator } from '@react-navigation/stack';
 import RewardList from './reward_list';
-import StatScreen from './stat_screen';
 import RewardDetail from './reward_detail';
 
 const Stack = createStackNavigator();
@@ -12,12 +11,12 @@ function RewardScreen() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="RewardList"
+        name='RewardList'
         component={RewardList}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="RewardDetail"
+        name='RewardDetail'
         component={RewardDetail}
         options={{ headerShown: false }}
       />
