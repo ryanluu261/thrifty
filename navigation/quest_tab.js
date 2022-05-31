@@ -10,7 +10,7 @@ class QuestTab extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dailyQuest: props.quest,
+      dailyQuest: props.dailyQuest,
       modalVisible: false,
     };
   }

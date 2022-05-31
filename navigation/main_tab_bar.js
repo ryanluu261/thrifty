@@ -106,7 +106,7 @@ class MainTabBar extends Component {
           })}
         >
           <Stack.Screen name="Home" options={headerStyle}>
-            {(props) => <HomeTab user={this.state.user.name} />}
+            {(props) => <HomeTab userName={this.state.user.name} />}
           </Stack.Screen>
           <Stack.Screen
             name="Search"
@@ -117,7 +117,7 @@ class MainTabBar extends Component {
             name="Quest"
             options={headerStyle}
           >
-            {(props) => <QuestTab quest={this.state.quest.task} />}
+            {(props) => <QuestTab dailyQuest={this.state.quest.task} />}
           </Stack.Screen>
           <Stack.Screen
             name="Groups"

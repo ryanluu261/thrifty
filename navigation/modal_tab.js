@@ -9,7 +9,7 @@ class ModalTab extends React.Component {
     super(props);
     this.state = {
       modalVisible: true,
-      user: props.user,
+      userName: props.user,
     };
   }
 
@@ -22,8 +22,8 @@ class ModalTab extends React.Component {
             <View style={styles.modalContent}>
               <Text style={styles.modalText}>
                 Welcome
-                {' Zhoucai'}
-                {this.state.user}
+
+                {this.state.userName}
                 ! Today&apos;s quest is to go to the river
                 {' '}
               </Text>
