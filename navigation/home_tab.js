@@ -1,9 +1,11 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
   StyleSheet, View, ScrollView,
 } from 'react-native';
 import Post from '../components/post';
 import ModalTab from './modal_tab';
+import userGet from '../services/sidequestUser-api';
 
 const postDetails1 = {
   uri: 'https://facebook.github.io/react/logo-og.png',
@@ -27,6 +29,13 @@ const postDetails3 = {
 };
 
 class HomeTab extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: props.userName,
+    };
+  }
+
   render() {
     return (
 
@@ -38,7 +47,7 @@ class HomeTab extends Component {
           <Post style={styles.post} postDetails={postDetails2} />
           <Post style={styles.post} postDetails={postDetails1} />
         </View>
-        <ModalTab />
+        <ModalTab initialParams={this.state.userName} />
       </ScrollView>
 
     );

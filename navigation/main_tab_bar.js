@@ -49,7 +49,8 @@ class MainTabBar extends Component {
 
   render() {
     console.log('main tab bar state print----------------');
-    console.log(this.state.user.name);
+    console.log(`${this.state.user}user`);
+    // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
@@ -80,7 +81,9 @@ class MainTabBar extends Component {
             },
           })}
         >
-          <Stack.Screen name="Home" options={headerStyle} component={HomeTab} />
+          <Stack.Screen name="Home" options={headerStyle}>
+            { (props) => <HomeTab {...props} userName={this.state.user} />}
+          </Stack.Screen>
           <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
           <Stack.Screen name="Quest" options={headerStyle} component={QuestTab} />
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />

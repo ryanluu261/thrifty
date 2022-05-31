@@ -5,14 +5,17 @@ import {
 } from 'react-native';
 
 class ModalTab extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modalVisible: true,
+      user: props.userName,
     };
+    // console.log(this.props.route.params.name);
   }
 
   render() {
+    console.log(this.state.user);
     return (
       <View style={styles.container}>
         <Text style={styles.normalScreen} />
@@ -20,7 +23,8 @@ class ModalTab extends React.Component {
           <View style={styles.modal}>
             <View style={styles.modalContent}>
               <Text style={styles.modalText}>
-                Welcome Zhoucai! Today&apos;s quest is going on a sunrike!
+                {/* Welcome Zhoucai! Today&apos;s quest is going on a sunrike! */}
+                {this.state.user}
               </Text>
               <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
                 <Text style={styles.buttonText}>

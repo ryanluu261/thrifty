@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet, View, Text, ScrollView, Pressable, Modal,
 } from 'react-native';
-import { fetchDailyQuests } from '../actions/index';
+// import { fetchDailyQuests } from '../services/pullQuest-api';
 
 class QuestTab extends Component {
   // make an async call to the server to get the daily quest
