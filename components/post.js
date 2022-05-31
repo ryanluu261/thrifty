@@ -16,13 +16,20 @@ class Post extends Component {
 
   render() {
     return (
-      <View style={[styles.container, styles.shadowProp]}>
-        <Image style={styles.image} source={{ uri: this.postDetails.uri }} />
+      <View style={styles.container}>
+        <Image
+          style={styles.image}
+          source={{ uri: this.postDetails.photoUrl }}
+        />
         <View style={styles.postDetails}>
-          <Text style={styles.userName}>{this.postDetails.userName}</Text>
-          <Text style={styles.questName}>{this.postDetails.questName}</Text>
+          <Text style={styles.userName}>
+            {this.postDetails.id}
+          </Text>
+          <Text style={styles.questName}>
+            {this.postDetails.title}
+          </Text>
           <Text style={styles.questDetails}>
-            {this.postDetails.questDetails}
+            {this.postDetails.description}
           </Text>
         </View>
       </View>
@@ -35,9 +42,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     justifyContent: 'space-around',
+    borderWidth: 5,
+    borderColor: 'black',
+    width: '100%',
+    height: '100%',
     borderRadius: 8,
-    // borderWidth: 1,
-    // borderColor: 'black',
     marginBottom: 30,
     paddingBottom: 10,
   },
@@ -45,6 +54,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     alignItems: 'flex-start',
     marginLeft: 10,
+    marginRight: 10,
   },
   userName: {
     color: 'grey',
@@ -52,10 +62,13 @@ const styles = StyleSheet.create({
   questName: {
     fontWeight: 'bold',
   },
-  questDetails: {},
+  questDetails: {
+    height: 'auto',
+    // wordWrap: 'wrap',
+  },
   image: {
-    width: 350,
-    height: 200,
+    width: '100%',
+    height: 650,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },

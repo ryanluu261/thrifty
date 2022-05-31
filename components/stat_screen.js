@@ -12,7 +12,7 @@ class StatScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '6293e560ec3bf1362cbeef1c',
+      id: '62955568344a64f0f6811392',
       loop: true,
       resetAfterFinish: false,
       fps: '16',
@@ -138,7 +138,7 @@ class StatScreen extends Component {
               <View style={styles.statsContainer}>
                 <View style={styles.stat}>
                   <Text style={styles.statDesciText}>Streak:</Text>
-                  <Text style={styles.statText}> n/a </Text>
+                  <Text style={styles.statText}> {this.state.user.streak} </Text>
                 </View>
                 <View style={styles.stat}>
                   <Text style={styles.statDesciText}>Wisdom:</Text>
@@ -151,14 +151,14 @@ class StatScreen extends Component {
                   <Text style={styles.statDesciText}>Strength:</Text>
                   <Text style={styles.statText}>
                     {' '}
-                    {this.state.stats.wisdom}
+                    {this.state.stats.strength}
                   </Text>
                 </View>
                 <View style={styles.stat}>
                   <Text style={styles.statDesciText}>Charisma:</Text>
                   <Text style={styles.statText}>
                     {' '}
-                    {this.state.stats.wisdom}
+                    {this.state.stats.charisma}
                   </Text>
                 </View>
                 <View style={styles.stat}>
