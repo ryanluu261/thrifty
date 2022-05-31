@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // Image Preview
 // Generates an image preview
 // Click cross for go back
@@ -10,34 +11,61 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Image, TouchableOpacity,
+  StyleSheet, View, Image, TouchableOpacity, Text,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import { StackActions } from '@react-navigation/native';
+import uploadImage from '../services/firebase';
 
 class ImagePreview extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: this.props.route.params.image,
+      imageUrl: '',
     };
-    this.handleCheckButton = this.handleCheckButton.bind(this);
     this.handleCrossButton = this.handleCrossButton.bind(this);
-  }
-
-  // go back to the first page
-  handleCheckButton(e) {
-    this.props.navigation.popToTop(
-      {
-        image: this.state.image,
-      },
-    );
+    this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
   // go back to the first page
   handleCrossButton(e) {
     const popAction = StackActions.pop(1);
     this.props.navigation.dispatch(popAction);
+  }
+
+  // reference: https://stackoverflow.com/questions/70194396/firebase-storage-uploads-file-as-9b-file
+  // convert local image into a blob and upload to firebase storage.
+  async handleImageUpload() {
+    const blob = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        resolve(xhr.response);
+      };
+      xhr.onerror = (e) => {
+        console.log(e);
+        reject(new TypeError('Request failed'));
+      };
+      xhr.responseType = 'blob';
+      xhr.open('GET', this.state.image.uri, true);
+      xhr.send(null);
+    });
+
+    uploadImage(blob, (url) => {
+      if (url) {
+        this.setState(
+          { imageUrl: url },
+          () => {
+            this.props.navigation.navigate(
+              'NewPost',
+              {
+                coverUrl: url,
+              },
+            );
+          },
+        );
+      }
+    });
   }
 
   render() {
@@ -54,9 +82,13 @@ class ImagePreview extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            onPress={this.handleCheckButton}
+            onPress={this.handleImageUpload}
           >
-            <Ionicons name="check" size={85} style={styles.post_icon} />
+            <Ionicons
+              name="check"
+              size={85}
+              style={styles.post_icon}
+            />
           </TouchableOpacity>
         </View>
       </View>

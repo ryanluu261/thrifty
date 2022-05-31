@@ -42,16 +42,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-around',
-    borderRadius: 5,
-    borderWidth: 2,
+    // borderRadius: 5,
+    borderWidth: 5,
     borderColor: 'black',
-    marginBottom: 10,
-    paddingBottom: 10,
+    // marginBottom: 10,
+    // paddingBottom: 10,
+    width: '100%',
+    height: '100%',
   },
   postDetails: {
     paddingTop: 5,
     alignItems: 'flex-start',
     marginLeft: 10,
+    marginRight: 10,
   },
   userName: {
     color: 'grey',
@@ -59,10 +62,13 @@ const styles = StyleSheet.create({
   questName: {
     fontWeight: 'bold',
   },
-  questDetails: {},
+  questDetails: {
+    height: 'auto',
+    // wordWrap: 'wrap',
+  },
   image: {
-    width: 350,
-    height: 200,
+    width: '100%',
+    height: 650,
   },
 });
 

@@ -21,8 +21,8 @@ const userGet = (id) => {
   return new Promise((resolve, reject) => {
     // console.log('get user');
     // console.log(params);
-    console.log(`${API_URL}/:${params.id}`);
-    instance.get(`${API_URL}/:${params.id}`)
+    console.log(`${API_URL}/${params.id}`);
+    instance.get(`${API_URL}/${params.id}`)
       .then((response) => {
         // console.log(`${API_URL}/${params.id}`);
         // console.log(response);

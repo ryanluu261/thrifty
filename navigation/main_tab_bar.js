@@ -24,7 +24,7 @@ class MainTabBar extends Component {
     this.state = {
       user: [],
       posts: [],
-      id: '6293e560ec3bf1362cbeef1c',
+      id: '629556c1c7201ffe57a8e1ef',
     };
   }
 
@@ -37,12 +37,9 @@ class MainTabBar extends Component {
   fetchUser() {
     userGet(this.state.id)
       .then((responseData) => {
-        // console.log('main-tab response data----------------');
-        // console.log(responseData);
         this.setState({
           user: responseData,
         });
-        // console.log('main_tab_bar');
       }).catch((error) => {
         console.log(error);
       });
@@ -51,8 +48,6 @@ class MainTabBar extends Component {
   fetchPosts() {
     postsGet()
       .then((responseData) => {
-        // console.log('main-tab response data----------------');
-        // console.log(responseData);
         this.setState({
           posts: responseData,
         });
@@ -63,7 +58,6 @@ class MainTabBar extends Component {
 
   render() {
     console.log('main tab bar state print----------------');
-    console.log(this.state.posts);
     return (
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
