@@ -10,19 +10,19 @@ const instance = axios.create(
     },
   },
 );
-const API_URL = 'https://sidequest.onrender.com/api/users/';
+const API_URL = 'https://sidequest.onrender.com/api/homeTab/posts';
 // const API_URL = 'http://localhost:9090/api/users';
 
-const userGet = (id) => {
-  const params = {
-    id,
-  };
+const postsGet = () => {
+  // const params = {
+  //   id,
+  // };
 
   return new Promise((resolve, reject) => {
     // console.log('get user');
     // console.log(params);
-    console.log(`${API_URL}/${params.id}`);
-    instance.get(`${API_URL}/${params.id}`)
+    console.log(`${API_URL}/all`);
+    instance.get(`${API_URL}/all`)
       .then((response) => {
         // console.log(`${API_URL}/${params.id}`);
         // console.log(response);
@@ -36,4 +36,4 @@ const userGet = (id) => {
   });
 };
 
-export default userGet;
+export default postsGet;

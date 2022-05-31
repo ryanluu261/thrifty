@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
-  ScrollView,
-  Text,
   useWindowDimensions,
 } from 'react-native';
 import { SceneMap, TabView, TabBar } from 'react-native-tab-view';
@@ -50,6 +48,7 @@ function HomeTab() {
     </View>
   );
 }
+// }
 
 const styles = StyleSheet.create({
   container: {
