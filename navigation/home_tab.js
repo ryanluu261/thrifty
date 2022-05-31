@@ -49,7 +49,7 @@ function HomeTab() {
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
       />
-      <ModalTab />
+      {/* <ModalTab /> */}
     </View>
 
   );
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    height: '100%',
+    // height: '100%',
   },
   header: {
     fontSize: 24,
