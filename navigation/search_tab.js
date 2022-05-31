@@ -12,7 +12,7 @@ function SearchTab() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Search"
+        name="search-tab"
         component={VideoList}
         options={{
           title: 'Youtube Search',
