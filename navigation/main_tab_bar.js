@@ -66,14 +66,14 @@ class MainTabBar extends Component {
           quest: responseData,
         });
         // console.log('main_tab_bar');
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
       });
   }
 
   render() {
     console.log('main tab bar state print----------------');
-    // console.log(`${this.state.user}user`);
     // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
@@ -108,12 +108,29 @@ class MainTabBar extends Component {
           <Stack.Screen name="Home" options={headerStyle}>
             {(props) => <HomeTab user={this.state.user.name} />}
           </Stack.Screen>
-          <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
-          <Stack.Screen name="Quest" options={headerStyle}>
+          <Stack.Screen
+            name="Search"
+            options={headerStyle}
+            component={SearchTab}
+          />
+          <Stack.Screen
+            name="Quest"
+            options={headerStyle}
+          >
             {(props) => <QuestTab quest={this.state.quest.task} />}
           </Stack.Screen>
-          <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
-          <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} screenProps={{ user: 'abc' }} initialParams={this.state.user} />
+          <Stack.Screen
+            name="Groups"
+            options={headerStyle}
+            component={GroupTab}
+          />
+          <Stack.Screen
+            name="Profile"
+            options={headerStyle}
+            component={ProfileTab}
+            screenProps={{ user: 'abc' }}
+            initialParams={this.state.user}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     );

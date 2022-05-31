@@ -11,9 +11,9 @@ const Stack = createStackNavigator();
 function GroupsTab() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Groups' component={GroupsList} />
+      <Stack.Screen name="Groups" component={GroupsList} />
       <Stack.Screen
-        name='GroupsDetail'
+        name="GroupsDetail"
         component={GroupsDetail}
         options={{ headerShown: false }}
       />

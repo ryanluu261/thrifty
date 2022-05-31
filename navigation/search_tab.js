@@ -1,30 +1,94 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { Component } from 'react';
+import {
+  // eslint-disable-next-line no-unused-vars
+  StyleSheet, View, Text,
+} from 'react-native';
+import { SearchBar } from '@rneui/themed';
 
-import VideoList from '../components/video_list';
-import VideoDetail from '../components/video_detail';
+class SearchTab extends Component {
+  state = {
+    search: '',
+  };
 
-const Stack = createStackNavigator();
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
 
-// nest stack navigator to handle two internal views
-// "name" prop is the name of the route
-function SearchTab() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="search-tab"
-        component={VideoList}
-        options={{
-          title: 'Youtube Search',
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
-        }}
-      />
-      <Stack.Screen name="Detail" component={VideoDetail} />
-    </Stack.Navigator>
-  );
+  render() {
+    const { search } = this.state;
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.title}>
+          <Text style={styles.titleText}>
+            Friends
+          </Text>
+        </View>
+        <View style={styles.findFriends}>
+          <Text style={styles.subText}>
+            Find Friends
+          </Text>
+          <SearchBar style={styles.searchBar}
+            placeholder="Type Username Here"
+            onChangeText={this.updateSearch}
+            value={search}
+            lightTheme
+            round
+            containerStyle={{
+              backgroundColor: '#ff',
+              borderWidth: 0,
+              borderRadius: 0,
+              borderBottomColor: 'transparent',
+              borderTopColor: 'transparent',
+            }}
+            inputContainerStyle={{ backgroundColor: 'white' }}
+          />
+        </View>
+        <Text style={styles.subText}>
+            Suggested
+        </Text>
+        <View>
+          <Text style={styles.noSuggestions}>
+            No Current Suggestions
+          </Text>
+        </View>
+      </View>
+    );
+  }
 }
+
+const styles = StyleSheet.create({
+  title: {
+    justifyContent: 'left',
+    alignItems: 'left',
+    paddingRight: 250,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingLeft: 10,
+  },
+  titleText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  subText: {
+    fontSize: 20,
+    alignItems: 'left',
+    paddingLeft: 20,
+  },
+  searchBar: {
+    platform: 'default',
+    paddingLeft: 0,
+    background: '#fff',
+  },
+  findFriends: {
+    paddingBottom: 20,
+  },
+  noSuggestions: {
+    // display: 'none',
+    alignSelf: 'center',
+    paddingTop: '50%',
+  },
+
+});
 
 export default SearchTab;

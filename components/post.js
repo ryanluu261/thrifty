@@ -16,24 +16,16 @@ class Post extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: this.postDetails.uri }}
-        />
+      <View style={[styles.container, styles.shadowProp]}>
+        <Image style={styles.image} source={{ uri: this.postDetails.uri }} />
         <View style={styles.postDetails}>
-          <Text style={styles.userName}>
-            {this.postDetails.userName}
-          </Text>
-          <Text style={styles.questName}>
-            {this.postDetails.questName}
-          </Text>
+          <Text style={styles.userName}>{this.postDetails.userName}</Text>
+          <Text style={styles.questName}>{this.postDetails.questName}</Text>
           <Text style={styles.questDetails}>
             {this.postDetails.questDetails}
           </Text>
         </View>
       </View>
-
     );
   }
 }
@@ -41,11 +33,12 @@ class Post extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
     justifyContent: 'space-around',
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: 'black',
-    marginBottom: 10,
+    borderRadius: 8,
+    // borderWidth: 1,
+    // borderColor: 'black',
+    marginBottom: 30,
     paddingBottom: 10,
   },
   postDetails: {
@@ -63,6 +56,14 @@ const styles = StyleSheet.create({
   image: {
     width: 350,
     height: 200,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -1, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
 });
 

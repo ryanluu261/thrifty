@@ -5,7 +5,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text, Image, TouchableOpacity, Alert,
+  StyleSheet, View, Text, Image, TouchableOpacity, Alert, TextInput,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import { Camera } from 'expo-camera';
@@ -15,10 +15,23 @@ class NewPost extends Component {
     super(props);
     this.state = {
       image: null,
-      coverUrl: null,
+      coverUrl: '',
+      title: '',
+      caption: '',
     };
 
     this.handleCameraClick = this.handleCameraClick.bind(this);
+    this.handleTitleTextChange = this.handleTitleTextChange.bind(this);
+    this.handleDetailsTextChange = this.handleDetailsTextChange.bind(this);
+  }
+
+  componentDidUpdate() {
+    try {
+      const url = this.props.route.params.coverUrl;
+      this.setState({ coverUrl: url });
+    } catch (error) {
+      // do nothing
+    }
   }
 
   async handleCameraClick() {
@@ -29,6 +42,14 @@ class NewPost extends Component {
     } else {
       Alert.alert('Access denied!');
     }
+  }
+
+  handleTitleTextChange(text) {
+    this.setState({ title: text });
+  }
+
+  handleDetailsTextChange(text) {
+    this.setState({ caption: text });
   }
 
   render() {
@@ -53,9 +74,24 @@ class NewPost extends Component {
           <Text style={styles.title}>Welcome, Username</Text>
           <Text style={styles.title}>Image goes here</Text>
         </View> */}
-        { coverUrl == null ? (
-          <Image source={{ uri: 'https://facebook.github.io/react/logo-og.png' }} />
-        ) : (<Image source={{ uri: coverUrl }} style={{ flex: 1 }} />)}
+        <View>
+          <TextInput
+            style={styles.input_title}
+            onChangeText={(text) => { this.handleTitleTextChange(text); }}
+            value={this.state.title}
+            placeholder="Title"
+          />
+          <TextInput
+            style={styles.input_box}
+            onChangeText={(text) => { this.handleDetailsTextChange(text); }}
+            value={this.state.caption}
+            placeholder="Write a detailed description for your quest..."
+            // keyboardType="text"
+          />
+
+          <Image style={styles.image} source={{ uri: coverUrl || 'https://facebook.github.io/react/logo-og.png' }} />
+        </View>
+        {/* <Text>{coverUrl}</Text> */}
       </View>
     );
   }
@@ -92,5 +128,51 @@ const styles = StyleSheet.create({
   post_icon: {
     marginLeft: 3,
     marginRight: 3,
+  },
+  image: {
+    width: '90%',
+    height: '80%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    marginLeft: 20,
+  },
+  input_title: {
+    width: '100%',
+    height: 50,
+    shadowColor: '#171717',
+    shadowOffset: { width: -1, height: 3 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    borderColor: 'black',
+    borderRadius: 5,
+    marginBottom: 10,
+    paddingHorizontal: 20,
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  input_box: {
+    // marginLeft: 'auto',
+    // marginRight: 'auto',
+    width: '100%',
+    height: 50,
+    shadowColor: '#171717',
+    shadowOffset: { width: -1, height: 3 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    borderColor: 'black',
+    borderRadius: 5,
+    marginBottom: 10,
+    paddingHorizontal: 20,
+    // paddingLeft: 8,
+    // paddingRight: 8,
+    fontSize: 14,
+    // fontWeight: 'bold',
+    color: 'black',
   },
 });
