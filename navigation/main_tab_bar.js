@@ -18,7 +18,6 @@ import userGet from '../services/sidequestUser-api';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-
 class MainTabBar extends Component {
   constructor(props) {
     super(props);
@@ -42,18 +41,19 @@ class MainTabBar extends Component {
           user: responseData,
         });
         // console.log('main_tab_bar');
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
       });
   }
 
   render() {
     console.log('main tab bar state print----------------');
-    console.log(this.state.user.name);
+    // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
-          initialRouteName="Home"
+          initialRouteName='Home'
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;
@@ -78,13 +78,30 @@ class MainTabBar extends Component {
                 />
               );
             },
-          })}
-        >
-          <Stack.Screen name="Home" options={headerStyle} component={HomeTab} />
-          <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
-          <Stack.Screen name="Quest" options={headerStyle} component={QuestTab} />
-          <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
-          <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} screenProps={{ user: 'abc' }} initialParams={this.state.user} />
+          })}>
+          <Stack.Screen name='Home' options={headerStyle} component={HomeTab} />
+          <Stack.Screen
+            name='Search'
+            options={headerStyle}
+            component={SearchTab}
+          />
+          <Stack.Screen
+            name='Quest'
+            options={headerStyle}
+            component={QuestTab}
+          />
+          <Stack.Screen
+            name='Groups'
+            options={headerStyle}
+            component={GroupTab}
+          />
+          <Stack.Screen
+            name='Profile'
+            options={headerStyle}
+            component={ProfileTab}
+            screenProps={{ user: 'abc' }}
+            initialParams={this.state.user}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     );
