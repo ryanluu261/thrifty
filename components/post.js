@@ -33,7 +33,6 @@ class Post extends Component {
           </Text>
         </View>
       </View>
-
     );
   }
 }
@@ -41,14 +40,15 @@ class Post extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
     justifyContent: 'space-around',
-    // borderRadius: 5,
     borderWidth: 5,
     borderColor: 'black',
-    // marginBottom: 10,
-    // paddingBottom: 10,
     width: '100%',
     height: '100%',
+    borderRadius: 8,
+    marginBottom: 30,
+    paddingBottom: 10,
   },
   postDetails: {
     paddingTop: 5,
@@ -69,6 +69,14 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 650,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -1, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
 });
 

@@ -24,7 +24,7 @@ class MainTabBar extends Component {
     this.state = {
       user: [],
       posts: [],
-      id: '629556c1c7201ffe57a8e1ef',
+      id: '62955568344a64f0f6811392',
     };
   }
 
@@ -58,10 +58,11 @@ class MainTabBar extends Component {
 
   render() {
     console.log('main tab bar state print----------------');
+    // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
-          initialRouteName="Quest"
+          initialRouteName="Home"
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;
@@ -88,7 +89,7 @@ class MainTabBar extends Component {
             },
           })}
         >
-          <Stack.Screen name="Home" options={headerStyle} component={HomeTab} initialParams={this.state.posts} />
+          <Stack.Screen name="Home" options={headerStyle} component={HomeTab} />
           <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
           <Stack.Screen name="Quest" options={headerStyle} component={QuestTab} />
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
