@@ -12,7 +12,7 @@ class StatScreen extends Component {
   constructor(props){
   super(props);
   this.state = {
-    id: '6293e560ec3bf1362cbeef1c',
+    id: '629556c1c7201ffe57a8e1ef',
     loop: true,
     resetAfterFinish: false,
     fps: '16',
@@ -154,13 +154,13 @@ stop = () => {
               <Text style={styles.statDesciText}>
                 Strength:
               </Text>
-            <Text style={styles.statText}> {this.state.stats.wisdom}</Text>
+            <Text style={styles.statText}> {this.state.stats.strength}</Text>
             </View>
             <View style={styles.stat}>
               <Text style={styles.statDesciText}>
                 Charisma:  
               </Text>
-              <Text style={styles.statText}> {this.state.stats.wisdom}</Text>
+              <Text style={styles.statText}> {this.state.stats.charisma}</Text>
             </View>
             <View style={styles.stat}>
               <Text style={styles.statDesciText}>
@@ -175,9 +175,9 @@ stop = () => {
     <Text style={styles.statText}> {this.state.stats.health}</Text>
             </View>
           </View>
-<View style={styles.pentagon}>
+    <View style={styles.pentagon}>
           {pentagonStat(this.state.stats)}
-</View>
+    </View>
         </View>
         </View>
       </ScrollView>
@@ -189,20 +189,11 @@ stop = () => {
 
 function pentagonStat(props) {
 
-//   const stats = {
-//   wisdom: 5,
-//   strength: 10,
-//   charisma: 10,
-//   magic: 10,
-//   health: 5,
-//   streak: 5,
-// };
-
   const stats = props
 
-const user = {
-  profilePic: 'https://i.ibb.co/2FhFgSB/zhoucaini.png',
-};
+  const user = {
+    profilePic: 'https://i.ibb.co/2FhFgSB/zhoucaini.png',
+  };
 
 //  wisdom
 const wisdomX = 150;

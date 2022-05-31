@@ -23,7 +23,7 @@ class MainTabBar extends Component {
     super(props);
     this.state = {
       user: [],
-      id: '6293e560ec3bf1362cbeef1c',
+      id: '629556c1c7201ffe57a8e1ef',
     };
   }
 
@@ -48,7 +48,7 @@ class MainTabBar extends Component {
 
   render() {
     console.log('main tab bar state print----------------');
-    console.log(this.state.user.name);
+    // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
