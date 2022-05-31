@@ -8,19 +8,19 @@ function FriendPosts() {
   const [posts, setPosts] = useState([
     {
       photoUrl: 'https://facebook.github.io/react/logo-og.png',
-      name: 'Bob',
+      id: 'Bob',
       title: 'Sunrike',
       description: 'Had the best times with my fav ppl',
     },
     {
       photoUrl: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Moe',
+      id: 'Moe',
       title: 'A Mile Run',
       description: 'A solid run!',
     },
     {
       photoUrl: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Billy',
+      id: 'Billy',
       title: 'Meditation',
       description: 'Feels closer to myself spritually now',
     },
