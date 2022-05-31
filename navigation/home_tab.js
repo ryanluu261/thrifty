@@ -7,6 +7,8 @@ import {
 import { SceneMap, TabView, TabBar } from 'react-native-tab-view';
 import FriendPosts from '../components/friend_posts';
 import CommunityPosts from '../components/community_posts';
+// import modal
+import ModalTab from './modal_tab';
 
 const renderTabBar = (props) => (
   <TabBar
@@ -18,7 +20,9 @@ const renderTabBar = (props) => (
       fontWeight: 'bold',
       marginLeft: 'auto',
       marginRight: 'auto',
+      // user: props.user,
     }}
+
   />
 );
 
@@ -45,7 +49,9 @@ function HomeTab() {
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
       />
+      {/* <ModalTab /> */}
     </View>
+
   );
 }
 // }
@@ -54,6 +60,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
+    // height: '100%',
   },
   header: {
     fontSize: 24,

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 // import { useWindowDimensions } from 'react-native';
 import { TabBar } from 'react-native-tab-view';
@@ -11,12 +12,12 @@ function RewardScreen() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name='RewardList'
+        name="RewardList"
         component={RewardList}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='RewardDetail'
+        name="RewardDetail"
         component={RewardDetail}
         options={{ headerShown: false }}
       />

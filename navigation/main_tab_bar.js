@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import Ionicons from 'react-native-vector-icons';
+// eslint-disable-next-line import/no-unresolved
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import About from '../components/about';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,6 +14,7 @@ import GroupTab from './groups_tab';
 import ProfileTab from './profile_tab';
 import QuestTab from './quest_tab';
 import userGet from '../services/sidequestUser-api';
+import questGet from '../services/pullQuest-api';
 import postsGet from '../services/sidequestPost-api';
 
 const Tab = createBottomTabNavigator();
@@ -22,16 +24,21 @@ class MainTabBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: [],
-      posts: [],
+      user: '',
       id: '62955568344a64f0f6811392',
+      questID: '6291214c48ffc29b3b082a4e',
     };
   }
 
   componentDidMount() {
     this.fetchUser();
-    this.fetchPosts();
+    this.fetchQuestData();
   }
+
+  // componentDidUpdate() {
+  //   this.fetchData();
+  //   this.fetchQuestData();
+  // }
 
   // ------------ put fetchData here! -------------//
   fetchUser() {
@@ -39,22 +46,38 @@ class MainTabBar extends Component {
       .then((responseData) => {
         this.setState({
           user: responseData,
+          // quest: responseData,
+        });
+        // console.log('main_tab_bar');
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+  // ------------ put fetchData here! -------------//
+  fetchQuestData() {
+    questGet(this.state.questID)
+      .then((responseData) => {
+        // console.log('main-tab response data----------------');
+        console.log(`${responseData}quest`);
+        this.setState({
+          quest: responseData,
         });
       }).catch((error) => {
         console.log(error);
       });
   }
 
-  fetchPosts() {
-    postsGet()
-      .then((responseData) => {
-        this.setState({
-          posts: responseData,
-        });
-      }).catch((error) => {
-        console.log(error);
-      });
-  }
+  // fetchPosts() {
+  //   postsGet()
+  //     .then((responseData) => {
+  //       this.setState({
+  //         posts: responseData,
+  //       });
+  //     }).catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     console.log('main tab bar state print----------------');

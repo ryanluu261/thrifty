@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+// import React from 'react';
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, Button, FlatList } from 'react-native';
 import Svg, { Polygon, Line, Text as SvgText } from 'react-native-svg';

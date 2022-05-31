@@ -1,15 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
 
-const Message = (props) => {
+function Message(props) {
   return (
     <View
-      style={props.type === 'self' ? styles.ownMessage : styles.friendsMessage}>
+      style={props.type === 'self' ? styles.ownMessage : styles.friendsMessage}
+    >
       <Text
         style={[
           styles.userName,
           props.type === 'self' ? { color: '#FFCC15' } : { color: '#67646d' },
-        ]}>
+        ]}
+      >
         Name
       </Text>
       <Text style={styles.text}>
@@ -20,7 +24,7 @@ const Message = (props) => {
       <Text style={styles.time}>13:15pm</Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   ownMessage: {

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet, View, Text, Image, TouchableOpacity,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 
-const GroupsList = () => {
+function GroupsList() {
   const navigation = useNavigation();
 
   const [groups, setGroups] = useState([
     {
-      name: "O'hana",
+      name: 'O\'hana',
       description: 'Means family',
       members: [
         {
@@ -41,7 +43,7 @@ const GroupsList = () => {
     },
     {
       name: 'Presentation group',
-      description: "Group for Tim's birthday",
+      description: 'Group for Tim\'s birthday',
       members: [
         {
           name: 'A',
@@ -95,7 +97,8 @@ const GroupsList = () => {
       style={styles.groupCard}
       onPress={() => {
         navigation.navigate('GroupsDetail', { group });
-      }}>
+      }}
+    >
       <Image
         style={styles.image}
         source={{ uri: 'https://facebook.github.io/react/logo-og.png' }}
@@ -104,15 +107,17 @@ const GroupsList = () => {
         <Text style={styles.groupName}>{group.name}</Text>
         <Text style={styles.groupDescrip}>{group.description}</Text>
         <Text style={styles.groupNum}>
-          {group.members.length.toString()} members
+          {group.members.length.toString()}
+          {' '}
+          members
         </Text>
       </View>
-      <Ionicons name='right' style={styles.groupIcon} />
+      <Ionicons name="right" style={styles.groupIcon} />
     </TouchableOpacity>
   ));
 
   return <View style={styles.container}>{renderedGroups}</View>;
-};
+}
 
 const styles = StyleSheet.create({
   container: {
