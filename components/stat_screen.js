@@ -189,15 +189,6 @@ stop = () => {
 
 function pentagonStat(props) {
 
-//   const stats = {
-//   wisdom: 5,
-//   strength: 10,
-//   charisma: 10,
-//   magic: 10,
-//   health: 5,
-//   streak: 5,
-// };
-
   const stats = props
 
 const user = {

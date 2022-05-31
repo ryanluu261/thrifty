@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, ScrollView,
+  StyleSheet, View, ScrollView, Text,
 } from 'react-native';
 import Post from '../components/post';
 
 const postDetails1 = {
-  uri: 'https://facebook.github.io/react/logo-og.png',
-  userName: 'Bob',
-  questName: 'Sunrike',
-  questDetails: 'Had the best times with my fav ppl',
+  photoUrl: 'https://facebook.github.io/react/logo-og.png',
+  id: 'Bruh',
+  title: 'Sunrike',
+  description: 'Had the best times with my fav ppl',
 };
 
 const postDetails2 = {
-  uri: 'https://facebook.github.io/react/logo-og.png',
-  userName: 'Moe',
-  questName: 'A Mile Run',
-  questDetails: 'A solid run!',
+  photoUrl: 'https://facebook.github.io/react/logo-og.png',
+  id: 'Moe',
+  title: 'A Mile Run',
+  description: 'A solid run!',
 };
 
 const postDetails3 = {
@@ -25,23 +25,29 @@ const postDetails3 = {
   questDetails: 'Feels closer to myself spritually now',
 };
 
-class HomeTab extends Component {
-  render() {
-    return (
+function HomeTab(props) {
+  console.log('home page-----------');
+  console.log(props.route.params);
+  return (
 
-      <ScrollView style={styles.scroll}>
-        <View style={styles.container}>
-          <Post style={styles.post} postDetails={postDetails1}> </Post>
-          <Post style={styles.post} postDetails={postDetails2} />
-          <Post style={styles.post} postDetails={postDetails3} />
-          <Post style={styles.post} postDetails={postDetails2} />
-          <Post style={styles.post} postDetails={postDetails1} />
-        </View>
-      </ScrollView>
+    <ScrollView style={styles.scroll}>
+      <View style={styles.container}>
+        {/* <Text>
+          {' '}
+          {props.route.params[0].title}
+        </Text> */}
+        <Post style={styles.post} postDetails={postDetails1} />
+        <Post style={styles.post} postDetails={postDetails2} />
+        <Post style={styles.post} postDetails={props.route.params[0]} />
+        {/* <Post style={styles.post} postDetails={postDetails3} />
+        <Post style={styles.post} postDetails={postDetails2} />
+        <Post style={styles.post} postDetails={postDetails1} /> */}
+      </View>
+    </ScrollView>
 
-    );
-  }
+  );
 }
+// }
 
 const styles = StyleSheet.create({
   container: {

@@ -19,17 +19,17 @@ class Post extends Component {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={{ uri: this.postDetails.uri }}
+          source={{ uri: this.postDetails.photoUrl }}
         />
         <View style={styles.postDetails}>
           <Text style={styles.userName}>
-            {this.postDetails.userName}
+            {this.postDetails.id}
           </Text>
           <Text style={styles.questName}>
-            {this.postDetails.questName}
+            {this.postDetails.title}
           </Text>
           <Text style={styles.questDetails}>
-            {this.postDetails.questDetails}
+            {this.postDetails.description}
           </Text>
         </View>
       </View>
