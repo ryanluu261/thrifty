@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import {
   // eslint-disable-next-line no-unused-vars
-  StyleSheet, View, Text,
+  StyleSheet, View, Text, Image,
 } from 'react-native';
 import { SearchBar } from '@rneui/themed';
+import Friend from '../components/friend';
+
+const ex_friend_info = {
+  userName: 'Kash Money',
+  mutualFriends: '7 Mutual Friends',
+}
 
 class SearchTab extends Component {
   state = {
@@ -47,6 +53,7 @@ class SearchTab extends Component {
         <Text style={styles.subText}>
             Suggested
         </Text>
+        <Friend style={styles.friend} friendInfo={ex_friend_info}/>
         <View>
           <Text style={styles.noSuggestions}>
             No Current Suggestions
@@ -61,10 +68,9 @@ const styles = StyleSheet.create({
   title: {
     justifyContent: 'left',
     alignItems: 'left',
-    paddingRight: 250,
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 10,
+    paddingTop: 50,
+    paddingBottom: 40,
+    paddingLeft: 20,
   },
   titleText: {
     fontSize: 30,
@@ -74,6 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignItems: 'left',
     paddingLeft: 20,
+    paddingBottom: 20,
   },
   searchBar: {
     platform: 'default',
@@ -84,11 +91,10 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   noSuggestions: {
-    // display: 'none',
+    display: 'none',
     alignSelf: 'center',
     paddingTop: '50%',
   },
-
 });
 
 export default SearchTab;
