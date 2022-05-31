@@ -44,11 +44,11 @@ class SearchTab extends Component {
             inputContainerStyle={{ backgroundColor: 'white' }}
           />
         </View>
-        <View>
-          <Text style={styles.subText}>
+        <Text style={styles.subText}>
             Suggested
-          </Text>
-          <Text style={styles.defaultText}>
+        </Text>
+        <View>
+          <Text style={styles.noSuggestions}>
             No Current Suggestions
           </Text>
         </View>
@@ -58,11 +58,6 @@ class SearchTab extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirections: 'column',
-    background: '#fff',
-  },
   title: {
     justifyContent: 'left',
     alignItems: 'left',
@@ -88,7 +83,8 @@ const styles = StyleSheet.create({
   findFriends: {
     paddingBottom: 20,
   },
-  defaultText: {
+  noSuggestions: {
+    // display: 'none',
     alignSelf: 'center',
     paddingTop: '50%',
   },
