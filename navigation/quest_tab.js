@@ -42,6 +42,7 @@ function QuestTab(props) {
     setModalVisability(true);
     // setQuestTitle('Jump in the river');
     // console.log(questTitle);
+  }
 
   function handleQuestExit() {
     setModalVisability(false);
@@ -55,10 +56,9 @@ function QuestTab(props) {
     }
   }, [isFocused]);
 
-  console.log(user);
   const groupQuestList = user.quests.map((quest) => (
     <TouchableOpacity
-      key={quest.id}
+      key={quest}
       onPress={() => handleGroupQuestPress(quest)}
     >
       <View style={styles.friendTask}>
