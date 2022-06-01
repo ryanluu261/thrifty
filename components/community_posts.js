@@ -1,38 +1,71 @@
-import React, { useState } from 'react';
-
-import { View, StyleSheet, ScrollView } from 'react-native';
-
+import React, { useState, useEffect } from 'react';
+import {
+  StyleSheet, View, ScrollView, Text,
+} from 'react-native';
 import Post from './post';
+import postsGet from '../services/sidequestPost-api';
 
-function CommunityPosts() {
-  const [posts, setPosts] = useState([
-    {
-      uri: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Bob',
-      questName: 'Sunrike',
-      questDetails: 'Had the best times with my fav ppl',
-    },
-    {
-      uri: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Moe',
-      questName: 'A Mile Run',
-      questDetails: 'A solid run!',
-    },
-    {
-      uri: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Billy',
-      questName: 'Meditation',
-      questDetails: 'Feels closer to myself spritually now',
-    },
-  ]);
+// const postDetails1 = {
+//   photoUrl: 'https://facebook.github.io/react/logo-og.png',
+//   id: 'Bruh',
+//   title: 'Sunrike',
+//   description: 'Had the best times with my fav ppl',
+// };
 
-  const renderedPosts = posts.map((post) => (
-    <Post key={post.userName} postDetails={post} />
+// const postDetails2 = {
+//   photoUrl: 'https://facebook.github.io/react/logo-og.png',
+//   id: 'Moe',
+//   title: 'A Mile Run',
+//   description: 'A solid run!',
+// };
+
+// const postDetails3 = {
+//   uri: 'https://facebook.github.io/react/logo-og.png',
+//   userName: 'Billy',
+//   questName: 'Meditation',
+//   questDetails: 'Feels closer to myself spritually now',
+// };
+
+function CommunityPosts(props) {
+  console.log('home page-----------');
+
+  function fetchPosts() {
+    postsGet()
+      .then((responseData) => {
+        setPostList({
+          responseData,
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const [postList, setPostList] = useState({ responseData: [] });
+
+  useEffect(() => {
+    fetchPosts();
+    console.log('useEffect ran-----');
+  }, []);
+
+  // const postList = props.route.params;
+
+  console.log('postList----------start');
+  console.log(postList.responseData);
+  console.log('postList----------end');
+  // const newList = postList[0];
+
+  const posts = postList.responseData.map((post, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    // console.log(post)
+    <Post key={post.id} style={styles.post} postDetails={post} />
   ));
 
   return (
-    <ScrollView style={{ height: '100%' }}>
-      <View style={styles.container}>{renderedPosts}</View>
+
+    <ScrollView style={styles.scroll}>
+      <View style={styles.container}>
+        {posts}
+      </View>
     </ScrollView>
   );
 }

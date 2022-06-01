@@ -1,19 +1,17 @@
 import axios from 'axios';
 
-const instance = axios.create(
-  {
-    baseURL: '',
-    withCredentials: false,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    },
+const instance = axios.create({
+  baseURL: '',
+  withCredentials: false,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   },
-);
-const API_URL = 'https://sidequest.onrender.com/api/users';
-// const API_URL = 'http://localhost:9090/api/users';
+});
 
-const userGet = (id) => {
+const API_URL = 'https://sidequest.onrender.com/api/dailyquests';
+
+const questGet = (id) => {
   const params = {
     id,
   };
@@ -36,4 +34,4 @@ const userGet = (id) => {
   });
 };
 
-export default userGet;
+export default questGet;

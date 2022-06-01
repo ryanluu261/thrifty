@@ -7,22 +7,22 @@ import Post from './post';
 function FriendPosts() {
   const [posts, setPosts] = useState([
     {
-      uri: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Bob',
-      questName: 'Sunrike',
-      questDetails: 'Had the best times with my fav ppl',
+      photoUrl: 'https://facebook.github.io/react/logo-og.png',
+      id: 'Bob',
+      title: 'Sunrike',
+      description: 'Had the best times with my fav ppl',
     },
     {
-      uri: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Moe',
-      questName: 'A Mile Run',
-      questDetails: 'A solid run!',
+      photoUrl: 'https://facebook.github.io/react/logo-og.png',
+      id: 'Moe',
+      title: 'A Mile Run',
+      description: 'A solid run!',
     },
     {
-      uri: 'https://facebook.github.io/react/logo-og.png',
-      userName: 'Billy',
-      questName: 'Meditation',
-      questDetails: 'Feels closer to myself spritually now',
+      photoUrl: 'https://facebook.github.io/react/logo-og.png',
+      id: 'Billy',
+      title: 'Meditation',
+      description: 'Feels closer to myself spritually now',
     },
   ]);
   const renderedPosts = posts.map((post) => (

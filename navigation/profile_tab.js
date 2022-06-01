@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 import {
   useWindowDimensions, View, Image, StyleSheet, Text,

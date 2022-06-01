@@ -56,6 +56,7 @@ class ImagePreview extends Component {
         this.setState(
           { imageUrl: url },
           () => {
+            // alert(url);
             this.props.navigation.navigate(
               'NewPost',
               {

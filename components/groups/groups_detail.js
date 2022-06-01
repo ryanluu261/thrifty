@@ -1,20 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ADIcon from 'react-native-vector-icons/AntDesign';
 import EnIcon from 'react-native-vector-icons/Entypo';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
-import Message from './message';
 import { ScrollView } from 'react-native-gesture-handler';
+import Message from './message';
 
-const GroupsDetail = (props) => {
+function GroupsDetail(props) {
   const { route } = props;
   const { group } = route.params;
 
   const navigation = useNavigation();
 
   const renderedMembers = group.members.map((member) => {
-    return <Text>{member.name}, </Text>;
+    return (
+      <Text>
+        {member.name}
+        ,
+        {' '}
+      </Text>
+    );
   });
 
   return (
@@ -22,7 +30,7 @@ const GroupsDetail = (props) => {
       <View style={styles.container}>
         <View style={styles.groupHeader}>
           <ADIcon
-            name='arrowleft'
+            name="arrowleft"
             style={styles.backIcon}
             onPress={() => navigation.goBack()}
           />
@@ -30,20 +38,20 @@ const GroupsDetail = (props) => {
             <Text style={styles.groupName}>{group.name}</Text>
             <View style={styles.groupMembers}>{renderedMembers}</View>
           </View>
-          <EnIcon name='phone' style={styles.groupIcon} />
-          <EnIcon name='video-camera' style={styles.groupIcon} />
-          <FAIcon name='ellipsis-v' style={styles.groupIcon} />
+          <EnIcon name="phone" style={styles.groupIcon} />
+          <EnIcon name="video-camera" style={styles.groupIcon} />
+          <FAIcon name="ellipsis-v" style={styles.groupIcon} />
         </View>
-        <Message type='friends' />
-        <Message type='friends' />
+        <Message type="friends" />
+        <Message type="friends" />
 
         <Text style={styles.joinGroup}>Tim just joined tha group</Text>
 
-        <Message type='self' />
+        <Message type="self" />
       </View>
     </ScrollView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

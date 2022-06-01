@@ -1,41 +1,70 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text,
+  StyleSheet, View, Text, ScrollView, Pressable, Modal,
 } from 'react-native';
 
 class QuestTab extends Component {
+  // make an async call to the server to get the daily quest
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      dailyQuest: props.dailyQuest,
+      modalVisible: false,
+    };
+    console.log(this.state.dailyQuest);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <Text style={styles.titleText}>
-            Quests
-          </Text>
-        </View>
-        <View style={styles.topwrapper}>
-          <View style={styles.header}>
-            <Text style={styles.boldText}>
-              Current quest for today:
+      <ScrollView style={styles.scroll}>
+        <View style={styles.container}>
+          <View style={styles.title}>
+            <Text style={styles.titleText}>
+              Quests
             </Text>
           </View>
-          <View style={styles.body}>
-            <Text style={styles.bodyText}>
-              Go on a sunrike with your friends
+          <Pressable style={styles.topwrapper} onPress={() => this.setState({ modalVisible: true })}>
+            <View style={styles.header}>
+              <Text style={styles.boldText}>
+                Current quest for today:
+              </Text>
+            </View>
+            <View style={styles.body}>
+              <Text style={styles.bodyText}>
+                {this.state.dailyQuest}
+                {/* Go on a sunrike! */}
+              </Text>
+            </View>
+          </Pressable>
+          <Modal visible={this.state.modalVisible} transparent>
+            <View style={styles.modal}>
+              <View style={styles.modalContent}>
+                <Text style={styles.modalText}>
+                  Upload Your Quest Post Here!
+                </Text>
+                <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
+                  <Text style={styles.buttonText}>
+                    Upload
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
+          <Text style={styles.titleTextTwo}>
+            Quests your friends assigned:
+          </Text>
+          <View style={styles.friendTask}>
+            <Text style={styles.friendBodyTitle}>
+              From your group &quot;blank&quot;:
+            </Text>
+            <Text style={styles.friendBodyText}>
+              The task is blank
             </Text>
           </View>
         </View>
-        <Text style={styles.titleTextTwo}>
-          Quests your friends assigned:
-        </Text>
-        <View style={styles.friendTask}>
-          <Text style={styles.friendBodyTitle}>
-            From your group &quot;blank&quot;:
-          </Text>
-          <Text style={styles.friendBodyText}>
-            The task is blank
-          </Text>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -111,6 +140,40 @@ const styles = StyleSheet.create({
   friendBodyText: {
     padding: 10,
     fontSize: 30,
+    fontWeight: 'bold',
+  },
+  modal: {
+    backgroundColor: '#000000aa',
+    flex: 1,
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    marginTop: 90,
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom: 80,
+    padding: 40,
+    borderRadius: 10,
+    flex: 1,
+  },
+  modalText: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 150,
+    paddingBottom: 50,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+  },
+  buttonText: {
+    color: 'black',
     fontWeight: 'bold',
   },
 
