@@ -29,21 +29,8 @@ class SearchTab extends Component {
   }
 
   fetchData() {
-    // userGet(this.state.search)
-    //   .then((responseData) => {
-    //     // console.log(responseData)
-    //     this.setState({
-    //       user: responseData,
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
     getAllUsers()
       .then((responseData) => {
-        // this.setState({
-        //   ballUsers: responseData,
-        // });
         friend_info.ballUsers = responseData;
       })
       .catch((error) => {
@@ -93,8 +80,6 @@ class SearchTab extends Component {
   }
 
   render() {
-    // console.log('render----')
-    // console.log(this.state.id)
     const { search } = this.state;
 
     return (
