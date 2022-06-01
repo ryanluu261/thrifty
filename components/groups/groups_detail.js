@@ -8,11 +8,14 @@ import EnIcon from 'react-native-vector-icons/Entypo';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import { ScrollView } from 'react-native-gesture-handler';
 import Message from './message';
+import { userUpdate } from '../../services/sidequestUser-api';
 
 function GroupsDetail(props) {
   const { route } = props;
   const { group } = route.params;
   const [modalVisible, setModalVisability] = useState(false);
+  const [id, setId] = useState('62955568344a64f0f6811392');
+  const [questId, setQuestId] = useState('629799cf67498e87ecbecfd0');
 
   const navigation = useNavigation();
 
@@ -25,6 +28,11 @@ function GroupsDetail(props) {
       </Text>
     );
   });
+
+  function addTask() {
+    setModalVisability(false);
+    userUpdate(id, { quest: questId });
+  }
 
   return (
     <ScrollView>
@@ -80,7 +88,7 @@ function GroupsDetail(props) {
             <View style={styles.buttonContainer}>
               <Pressable
                 style={styles.button}
-                onPress={() => setModalVisability(false)}
+                onPress={() => addTask()}
               >
                 <Text style={styles.buttonText}>
                   Accept
@@ -179,8 +187,6 @@ const styles = StyleSheet.create({
     height: 200,
     padding: 40,
     borderRadius: 10,
-    // flex: 1,
-    // justifyContent: 'center',
     alignItems: 'flex-start',
   },
   modalText: {
@@ -205,11 +211,8 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    // justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    // borderRadius: 4,
-    // elevation: 3,
     backgroundColor: '#FFCC15',
   },
   buttonText: {

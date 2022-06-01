@@ -37,15 +37,10 @@ class StatScreen extends Component {
   fetchData() {
     userGet(this.state.id)
       .then((responseData) => {
-        // console.log(responseData);
         this.setState({
           user: responseData,
           stats: responseData.stats,
         });
-        // stats = responseData.stats;
-        // console.log(stats);
-        // console.log("stat screen log");
-        // console.log(responseData);
       })
       .catch((error) => {
         console.log(error);
