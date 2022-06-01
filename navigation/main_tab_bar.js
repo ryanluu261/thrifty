@@ -118,6 +118,13 @@ class MainTabBar extends Component {
           <Stack.Screen name="Quest" options={headerStyle}>
             { (props) => <QuestTab {...props} dailyQuest={this.state.quest.task} />}
           </Stack.Screen>
+          <Stack.Screen name="Camera"
+            options={{
+              tabBarButton: () => null,
+              tabBarVisible: false,
+            }}
+            component={CameraStack}
+          />
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
           {/* <Stack.Screen name="CameraStack" options={headerStyle} component={CameraStack} /> */}
           <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} initialParams={this.state.user} />

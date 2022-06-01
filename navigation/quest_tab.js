@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet, View, Text, ScrollView, Pressable, Modal,
 } from 'react-native';
-import '../components/camera_stack';
-import HomeTab from './home_tab';
 
 class QuestTab extends Component {
   // make an async call to the server to get the daily quest
@@ -46,11 +44,20 @@ class QuestTab extends Component {
                 <Text style={styles.modalText}>
                   Upload Your Quest Post Here!
                 </Text>
-                {/* <Pressable style={styles.button} onPress={() => this.props.navigation.navigate('NewPost')}>
+                <Pressable style={styles.button}
+                  onPress={
+                  () => {
+                    this.setState(
+                      { modalVisible: false },
+                      this.props.navigation.navigate('Camera', { screen: 'NewPost', params: { title: this.state.dailyQuest } }),
+                    );
+                  }
+}
+                >
                   <Text style={styles.buttonText}>
                     Upload
                   </Text>
-                </Pressable> */}
+                </Pressable>
               </View>
             </View>
           </Modal>
