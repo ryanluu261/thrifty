@@ -16,6 +16,7 @@ import QuestTab from './quest_tab';
 import userGet from '../services/sidequestUser-api';
 import questGet from '../services/pullQuest-api';
 import postsGet from '../services/sidequestPost-api';
+import CameraStack from '../components/camera_stack';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -117,6 +118,13 @@ class MainTabBar extends Component {
           <Stack.Screen name="Quest" options={headerStyle}>
             { (props) => <QuestTab {...props} dailyQuest={this.state.quest.task} />}
           </Stack.Screen>
+          <Stack.Screen name="Camera"
+            options={{
+              tabBarButton: () => null,
+              tabBarVisible: false,
+            }}
+            component={CameraStack}
+          />
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
           <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} initialParams={this.state.user} />
         </Tab.Navigator>

@@ -44,7 +44,16 @@ class QuestTab extends Component {
                 <Text style={styles.modalText}>
                   Upload Your Quest Post Here!
                 </Text>
-                <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
+                <Pressable style={styles.button}
+                  onPress={
+                  () => {
+                    this.setState(
+                      { modalVisible: false },
+                      this.props.navigation.navigate('Camera', { screen: 'NewPost', params: { title: this.state.dailyQuest } }),
+                    );
+                  }
+}
+                >
                   <Text style={styles.buttonText}>
                     Upload
                   </Text>
