@@ -5,10 +5,11 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text, Image, TouchableOpacity, Alert, TextInput,
+  StyleSheet, View, Text, Image, TouchableOpacity, Alert, TextInput, ScrollView,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 import { Camera } from 'expo-camera';
+import { createPost } from '../services/createPost';
 
 class NewPost extends Component {
   constructor(props) {
@@ -16,13 +17,14 @@ class NewPost extends Component {
     this.state = {
       image: null,
       coverUrl: '',
-      title: '',
+      title: props.route.params.title,
       caption: '',
     };
 
     this.handleCameraClick = this.handleCameraClick.bind(this);
     this.handleTitleTextChange = this.handleTitleTextChange.bind(this);
     this.handleDetailsTextChange = this.handleDetailsTextChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate() {
@@ -52,47 +54,66 @@ class NewPost extends Component {
     this.setState({ caption: text });
   }
 
+  handleSubmit() {
+    if (this.state.coverUrl !== ''
+    && this.state.caption !== '') {
+      const fields = {
+        title: this.state.title,
+        description: this.state.caption,
+        photoUrl: this.state.coverUrl,
+        likes: 0,
+      };
+      createPost(fields);
+    } else {
+      alert('Please enter all fields & take a photo! ');
+    }
+  }
+
   render() {
     const { image } = this.state;
     const { coverUrl } = this.state;
 
     return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          underlayColor="orange"
-          onPress={this.handleCameraClick}
-        >
-          <View style={styles.post_container}>
-            <View style={styles.post_button}>
-              <Text style={styles.post_text}>Post</Text>
-              <Ionicons name="camera" size={26} style={styles.post_icon} color="#fff" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          <TouchableOpacity
+            underlayColor="orange"
+            onPress={this.handleCameraClick}
+          >
+            <View style={styles.post_container}>
+              <View style={styles.post_button}>
+                <Text style={styles.post_text}>Post</Text>
+                <Ionicons name="camera" size={26} style={styles.post_icon} color="#fff" />
+              </View>
             </View>
+          </TouchableOpacity>
+          <View>
+            <Text
+              style={styles.input_title}
+            >
+              {this.state.title}
+            </Text>
+            <TextInput
+              style={styles.input_box}
+              onChangeText={(text) => { this.handleDetailsTextChange(text); }}
+              value={this.state.caption}
+              placeholder="Write a detailed description for your quest..."
+            />
+
+            <Image style={styles.image} source={{ uri: coverUrl || 'https://facebook.github.io/react/logo-og.png' }} />
+            <TouchableOpacity
+              underlayColor="orange"
+              onPress={this.handleSubmit}
+            >
+              <View style={styles.button_container}>
+                <View style={this.state.coverUrl === '' ? styles.submit_button_gray : styles.submit_button}>
+                  <Text style={styles.submit_text}>Submit</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-
-        {/* <View>
-          <Text style={styles.title}>Welcome, Username</Text>
-          <Text style={styles.title}>Image goes here</Text>
-        </View> */}
-        <View>
-          <TextInput
-            style={styles.input_title}
-            onChangeText={(text) => { this.handleTitleTextChange(text); }}
-            value={this.state.title}
-            placeholder="Title"
-          />
-          <TextInput
-            style={styles.input_box}
-            onChangeText={(text) => { this.handleDetailsTextChange(text); }}
-            value={this.state.caption}
-            placeholder="Write a detailed description for your quest..."
-            // keyboardType="text"
-          />
-
-          <Image style={styles.image} source={{ uri: coverUrl || 'https://facebook.github.io/react/logo-og.png' }} />
         </View>
-        {/* <Text>{coverUrl}</Text> */}
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -175,4 +196,35 @@ const styles = StyleSheet.create({
     // fontWeight: 'bold',
     color: 'black',
   },
+  button_container: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: (3, 5, 3, 5),
+  },
+  submit_button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    height: 50,
+    backgroundColor: '#FFCC15',
+    borderRadius: 10,
+  },
+  submit_button_gray: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    height: 50,
+    backgroundColor: '#94928e',
+    borderRadius: 10,
+  },
+  submit_text: {
+    color: '#000',
+    marginRight: 3,
+    marginLeft: 3,
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+
 });

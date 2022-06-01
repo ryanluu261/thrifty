@@ -44,9 +44,23 @@ class QuestTab extends Component {
                 <Text style={styles.modalText}>
                   Upload Your Quest Post Here!
                 </Text>
-                <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
+                <Pressable style={styles.button}
+                  onPress={
+                  () => {
+                    this.setState(
+                      { modalVisible: false },
+                      this.props.navigation.navigate('Camera', { screen: 'NewPost', params: { title: this.state.dailyQuest } }),
+                    );
+                  }
+}
+                >
                   <Text style={styles.buttonText}>
                     Upload
+                  </Text>
+                </Pressable>
+                <Pressable style={styles.cancelButton} onPress={() => this.setState({ modalVisible: false })}>
+                  <Text style={styles.buttonText}>
+                    Cancel
                   </Text>
                 </Pressable>
               </View>
@@ -148,10 +162,10 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#ffffff',
-    marginTop: 90,
+    marginTop: 200,
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 80,
+    marginBottom: 200,
     padding: 40,
     borderRadius: 10,
     flex: 1,
@@ -160,8 +174,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 150,
-    paddingBottom: 50,
+    paddingTop: 100,
+    paddingBottom: 30,
   },
   button: {
     alignItems: 'center',
@@ -175,6 +189,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontWeight: 'bold',
+  },
+  cancelButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+    marginTop: 20,
   },
 
 });
