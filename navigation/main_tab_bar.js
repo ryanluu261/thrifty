@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import About from '../components/about';
 import { createStackNavigator } from '@react-navigation/stack';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import SearchTab from './search_tab';
 import HomeTab from './home_tab';
 import GroupTab from './groups_tab';
@@ -41,7 +41,7 @@ class MainTabBar extends Component {
       this.setState({
         loaded: true,
       });
-    }, 5000);
+    }, 2000);
   }
 
   // ------------ put fetchData here! -------------//

@@ -3,50 +3,16 @@ import React from 'react';
 import {
   View, Text, StyleSheet, Pressable, Modal,
 } from 'react-native';
-import userGet from '../services/sidequestUser-api';
-// import questGet from '../services/pullQuest-api';
 
 class ModalTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: '',
-      id: '62955568344a64f0f6811392',
-      // questID: '6293e683ea1205c7349c484f',
+      modalVisible: true,
+      userName: props.user,
+      setVisible: props.setVisible,
     };
   }
-
-  componentDidMount() {
-    this.fetchUser();
-    // this.fetchQuestData();
-  }
-
-  // ------------ put fetchData here! -------------//
-  fetchUser() {
-    userGet(this.state.id)
-      .then((responseData) => {
-        this.setState({
-          user: responseData,
-        });
-        // console.log('main_tab_bar');
-      }).catch((error) => {
-        console.log(error);
-      });
-  }
-
-  // ------------ put fetchData here! -------------//
-  // fetchQuestData() {
-  //   questGet(this.state.questID)
-  //     .then((responseData) => {
-  //       // console.log('main-tab response data----------------');
-  //       console.log(`${responseData}quest`);
-  //       this.setState({
-  //         quest: responseData,
-  //       });
-  //     }).catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   render() {
     return (
@@ -57,9 +23,9 @@ class ModalTab extends React.Component {
             <View style={styles.modalContent}>
               <Text style={styles.modalText}>
                 Welcome
-                {this.state.user}
+                {this.state.userName}
                 ! Today&apos;s quest is to go to the river
-                {/* {this.state.quest.questID} */}
+                {/* {this.state.dailyQuest} */}
               </Text>
               <Pressable style={styles.button} onPress={() => this.state.setVisible(false)}>
                 <Text style={styles.buttonText}>

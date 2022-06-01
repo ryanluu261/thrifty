@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text,
+  StyleSheet, View, ActivityIndicator,
 } from 'react-native';
 
 class Loading extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.normalScreen}>Loading...</Text>
+        <ActivityIndicator size="large" color="#FFCC15" />
       </View>
     );
   }
