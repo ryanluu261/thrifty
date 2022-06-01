@@ -9,7 +9,6 @@ class ModalTab extends React.Component {
     super(props);
     this.state = {
       modalVisible: true,
-      userName: props.user,
       setVisible: props.setVisible,
     };
   }
@@ -22,11 +21,9 @@ class ModalTab extends React.Component {
           <View style={styles.modal}>
             <View style={styles.modalContent}>
               <Text style={styles.modalText}>
-                Welcome
-
-                {this.state.userName}
-                ! Today&apos;s quest is to go to the river
-                {' '}
+                Welcome Zhoucai
+                ! Today&apos;s quest is to Slap Syed
+                {/* {this.state.dailyQuest} */}
               </Text>
               <Pressable style={styles.button} onPress={() => this.state.setVisible(false)}>
                 <Text style={styles.buttonText}>
@@ -55,10 +52,10 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#ffffff',
-    marginTop: 90,
+    marginTop: 200,
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 80,
+    marginBottom: 200,
     padding: 40,
     borderRadius: 10,
     flex: 1,
@@ -67,8 +64,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 150,
-    paddingBottom: 50,
+    paddingTop: 80,
+    paddingBottom: 20,
   },
   button: {
     alignItems: 'center',

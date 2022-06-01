@@ -42,6 +42,9 @@ function QuestTab(props) {
     setModalVisability(true);
     // setQuestTitle('Jump in the river');
     // console.log(questTitle);
+
+  function handleQuestExit() {
+    setModalVisability(false);
   }
 
   useEffect(() => {
@@ -104,6 +107,14 @@ function QuestTab(props) {
               >
                 <Text style={styles.buttonText}>
                   Upload
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonOne}
+                onPress={() => handleQuestExit()}
+              >
+                <Text style={styles.buttonText}>
+                  Cancel
                 </Text>
               </TouchableOpacity>
             </View>
@@ -227,6 +238,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontWeight: 'bold',
+  },
+  buttonOne: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+    marginTop: 20,
   },
   cancelButton: {
     alignItems: 'center',
