@@ -20,7 +20,7 @@ class Friend extends Component {
             {this.friendInfo.userName}
           </Text>
           <Text style={styles.mutuals}>
-            {this.friendInfo.mutualFriends}}
+            {this.friendInfo.mutualFriends}
           </Text>
         </View>
         <Icon name="plus" size={30} color="#000000" style={styles.icon} />
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#FFDD66',
     padding: 20,
-    width: '85%',
+    width: '90%',
     alignSelf: 'center',
     justifyContent: 'space-between',
     borderRadius: '15',
