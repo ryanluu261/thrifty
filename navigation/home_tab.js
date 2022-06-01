@@ -20,6 +20,7 @@ const renderTabBar = (props) => (
       fontWeight: 'bold',
       marginLeft: 'auto',
       marginRight: 'auto',
+      // user: props.user,
     }}
 
   />

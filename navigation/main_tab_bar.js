@@ -126,7 +126,6 @@ class MainTabBar extends Component {
             component={CameraStack}
           />
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
-          {/* <Stack.Screen name="CameraStack" options={headerStyle} component={CameraStack} /> */}
           <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} initialParams={this.state.user} />
         </Tab.Navigator>
       </NavigationContainer>
