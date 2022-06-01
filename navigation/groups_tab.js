@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import GroupsList from '../components/groups/groups_list';
 import GroupsDetail from '../components/groups/groups_detail';
 
@@ -11,7 +10,7 @@ const Stack = createStackNavigator();
 function GroupsTab() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Groups" component={GroupsList} />
+      <Stack.Screen name="Groups_Tab" options={headerStyle} component={GroupsList} />
       <Stack.Screen
         name="GroupsDetail"
         component={GroupsDetail}
@@ -20,5 +19,9 @@ function GroupsTab() {
     </Stack.Navigator>
   );
 }
+
+const headerStyle = {
+  headerShown: false,
+};
 
 export default GroupsTab;

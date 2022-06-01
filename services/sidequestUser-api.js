@@ -36,4 +36,25 @@ const userGet = (id) => {
   });
 };
 
+export const userUpdate = (id, updateFields) => {
+  const params = {
+    id,
+  };
+
+  return new Promise((resolve, reject) => {
+    // console.log('get user');
+    // console.log(params);
+    console.log(`${API_URL}/${params.id}`);
+    instance.put(`${API_URL}/${params.id}`, updateFields)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(`sidequest user api error: ${error}`);
+        reject(error);
+      });
+  });
+};
+
 export default userGet;

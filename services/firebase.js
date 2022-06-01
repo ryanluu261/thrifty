@@ -8,15 +8,14 @@ import 'react-native-get-random-values';
 import { v4 } from 'uuid';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBCJ0EIhSEVHNZITfzwVNumrc21-_uXqjM',
-  authDomain: 'firenotes-44351.firebaseapp.com',
-  databaseURL: 'https://firenotes-44351-default-rtdb.firebaseio.com',
-  projectId: 'firenotes-44351',
-  storageBucket: 'firenotes-44351.appspot.com',
-  messagingSenderId: '879015793856',
-  appId: '1:879015793856:web:2325a8449e8bce47204925',
+  apiKey: 'AIzaSyBPsdq66EUmFsEqj6wB4SHi2AX7AQZh4I4',
+  authDomain: 'secondchatapp-2c4ca.firebaseapp.com',
+  projectId: 'secondchatapp-2c4ca',
+  storageBucket: 'secondchatapp-2c4ca.appspot.com',
+  messagingSenderId: '965105434186',
+  appId: '1:965105434186:web:adccf15f8cda49051030b3',
+  measurementId: 'G-0YVGT6GCX4',
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);

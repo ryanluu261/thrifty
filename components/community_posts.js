@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet, View, ScrollView, Text,
+  StyleSheet, View, ScrollView,
 } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import Post from './post';
 import postsGet from '../services/sidequestPost-api';
 
-function CommunityPosts(props) {
-  console.log('home page-----------');
-
+function CommunityPosts() {
+  console.log('community page-----------');
   function fetchPosts() {
     postsGet()
       .then((responseData) => {
@@ -25,13 +24,9 @@ function CommunityPosts(props) {
   useEffect(() => {
     if (isFocused) {
       fetchPosts();
-      // console.log('useEffect ran-----');
+      console.log(postList.responseData.length);
     }
   }, [isFocused]);
-
-  // console.log('postList----------start');
-  // console.log(postList.responseData.length);
-  // console.log('postList----------end');
 
   const posts = postList.responseData.map((post, i) => (
     // eslint-disable-next-line react/no-array-index-key

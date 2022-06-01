@@ -16,7 +16,6 @@ import ProfileTab from './profile_tab';
 import QuestTab from './quest_tab';
 import userGet from '../services/sidequestUser-api';
 import questGet from '../services/pullQuest-api';
-import postsGet from '../services/sidequestPost-api';
 import CameraStack from '../components/camera_stack';
 import Loading from './load';
 

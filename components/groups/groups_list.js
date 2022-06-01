@@ -92,6 +92,7 @@ function GroupsList() {
   ]);
 
   const renderedGroups = groups.map((group) => (
+
     <TouchableOpacity
       key={group.name}
       style={styles.groupCard}
@@ -116,7 +117,14 @@ function GroupsList() {
     </TouchableOpacity>
   ));
 
-  return <View style={styles.container}>{renderedGroups}</View>;
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titleText}>
+        Groups
+      </Text>
+      {renderedGroups}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -124,6 +132,11 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     marginTop: 50,
+  },
+  titleText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
   groupCard: {
     flexDirection: 'row',
@@ -135,7 +148,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   image: {
-    borderRadius: '50%',
+    borderRadius: 50,
     height: 50,
     width: 50,
     marginRight: 10,
