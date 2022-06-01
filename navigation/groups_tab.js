@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import GroupsList from '../components/groups/groups_list';
 import GroupsDetail from '../components/groups/groups_detail';
+import GroupQuestDetail from '../components/groups/group_quest_details';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,11 @@ function GroupsTab() {
       <Stack.Screen
         name="GroupsDetail"
         component={GroupsDetail}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="GroupQuestDetail"
+        component={GroupQuestDetail}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
