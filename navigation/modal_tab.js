@@ -3,16 +3,50 @@ import React from 'react';
 import {
   View, Text, StyleSheet, Pressable, Modal,
 } from 'react-native';
+import userGet from '../services/sidequestUser-api';
+// import questGet from '../services/pullQuest-api';
 
 class ModalTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: true,
-      userName: props.user,
-      setVisible: props.setVisible,
+      user: '',
+      id: '62955568344a64f0f6811392',
+      // questID: '6293e683ea1205c7349c484f',
     };
   }
+
+  componentDidMount() {
+    this.fetchUser();
+    // this.fetchQuestData();
+  }
+
+  // ------------ put fetchData here! -------------//
+  fetchUser() {
+    userGet(this.state.id)
+      .then((responseData) => {
+        this.setState({
+          user: responseData,
+        });
+        // console.log('main_tab_bar');
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
+  // ------------ put fetchData here! -------------//
+  // fetchQuestData() {
+  //   questGet(this.state.questID)
+  //     .then((responseData) => {
+  //       // console.log('main-tab response data----------------');
+  //       console.log(`${responseData}quest`);
+  //       this.setState({
+  //         quest: responseData,
+  //       });
+  //     }).catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     return (
@@ -23,10 +57,9 @@ class ModalTab extends React.Component {
             <View style={styles.modalContent}>
               <Text style={styles.modalText}>
                 Welcome
-
-                {this.state.userName}
+                {this.state.user}
                 ! Today&apos;s quest is to go to the river
-                {' '}
+                {/* {this.state.quest.questID} */}
               </Text>
               <Pressable style={styles.button} onPress={() => this.state.setVisible(false)}>
                 <Text style={styles.buttonText}>
@@ -55,10 +88,10 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#ffffff',
-    marginTop: 90,
+    marginTop: 200,
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 80,
+    marginBottom: 200,
     padding: 40,
     borderRadius: 10,
     flex: 1,
@@ -67,8 +100,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 150,
-    paddingBottom: 50,
+    paddingTop: 80,
+    paddingBottom: 20,
   },
   button: {
     alignItems: 'center',
