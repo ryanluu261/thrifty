@@ -38,6 +38,7 @@ function HomeTab() {
     { key: 'first', title: 'Community' },
     { key: 'second', title: 'Friends' },
   ]);
+  const [visible, setVisible] = useState(true);
 
   return (
     <View style={styles.container}>
@@ -49,9 +50,8 @@ function HomeTab() {
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
       />
-      {/* <ModalTab /> */}
+      {visible ? <ModalTab setVisible={setVisible} /> : <View styles={{ visible: false }} /> }
     </View>
-
   );
 }
 // }
