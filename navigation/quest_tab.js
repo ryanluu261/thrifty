@@ -41,20 +41,22 @@ function QuestTab(props) {
     if (isFocused) {
       fetchUser();
       console.log('questList------');
-      console.log(user.quests);
+      console.log(user.quests.length);
     }
   }, [isFocused]);
 
   console.log(user);
   const groupQuestList = user.quests.map((quest) => (
-    <View key={quest.id} style={styles.friendTask}>
-      <Text style={styles.friendBodyTitle}>
-        From your group &quot;Ohana&quot;:
-      </Text>
-      <Text style={styles.friendBodyText}>
-        {quest.title}
-      </Text>
-    </View>
+    <TouchableOpacity>
+      <View key={quest.id} style={styles.friendTask}>
+        <Text style={styles.friendBodyTitle}>
+          From your group &quot;Ohana&quot;:
+        </Text>
+        <Text style={styles.friendBodyText}>
+          {quest.title}
+        </Text>
+      </View>
+    </TouchableOpacity>
   ));
 
   return (
@@ -101,7 +103,9 @@ function QuestTab(props) {
         <Text style={styles.titleTextTwo}>
           Quests your friends assigned:
         </Text>
-        {groupQuestList}
+        <View style={styles.groupQuestList}>
+          {groupQuestList}
+        </View>
       </View>
     </ScrollView>
   );
@@ -168,6 +172,7 @@ const styles = StyleSheet.create({
     height: 125,
     backgroundColor: '#B3B3B3',
     borderRadius: 10,
+    marginBottom: 15,
   },
   friendBodyTitle: {
     fontWeight: 'bold',

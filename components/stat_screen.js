@@ -73,8 +73,8 @@ class StatScreen extends Component {
 
   render() {
     // const { fps, loop, resetAfterFinish } = this.state;
-    console.log('render log');
-    console.log(this.state.stats);
+    // console.log('render log');
+    // console.log(this.state.stats);
     return (
       <View>
         <ScrollView style={{ height: '100%' }}>

@@ -17,8 +17,8 @@ const user = {
 };
 
 function ProfileTab(props) {
-  console.log('profile tab props--------------');
-  console.log(props);
+  // console.log('profile tab props--------------');
+  // console.log(props);
 
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);

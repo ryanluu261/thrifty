@@ -31,7 +31,9 @@ function GroupsDetail(props) {
 
   function addTask() {
     setModalVisability(false);
-    userUpdate(id, { quest: questId });
+    userUpdate(id, { quests: [questId] });
+    // eslint-disable-next-line no-alert
+    alert('Task Added');
   }
 
   return (
