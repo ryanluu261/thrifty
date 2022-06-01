@@ -10,6 +10,7 @@ class ModalTab extends React.Component {
     this.state = {
       modalVisible: true,
       userName: props.user,
+      setVisible: props.setVisible,
     };
   }
 
@@ -27,7 +28,7 @@ class ModalTab extends React.Component {
                 ! Today&apos;s quest is to go to the river
                 {' '}
               </Text>
-              <Pressable style={styles.button} onPress={() => this.setState({ modalVisible: false })}>
+              <Pressable style={styles.button} onPress={() => this.state.setVisible(false)}>
                 <Text style={styles.buttonText}>
                   OK
                 </Text>

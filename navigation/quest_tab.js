@@ -13,6 +13,7 @@ class QuestTab extends Component {
       dailyQuest: props.dailyQuest,
       modalVisible: false,
     };
+    console.log(this.state.dailyQuest);
   }
 
   render() {

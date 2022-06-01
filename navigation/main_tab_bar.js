@@ -114,7 +114,9 @@ class MainTabBar extends Component {
         >
           <Stack.Screen name="Home" options={headerStyle} component={HomeTab} />
           <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
-          <Stack.Screen name="Quest" options={headerStyle} component={QuestTab} />
+          <Stack.Screen name="Quest" options={headerStyle}>
+            { (props) => <QuestTab {...props} dailyQuest={this.state.questID.quest} />}
+          </Stack.Screen>
           <Stack.Screen name="Groups" options={headerStyle} component={GroupTab} />
           <Stack.Screen name="Profile" options={headerStyle} component={ProfileTab} initialParams={this.state.user} />
         </Tab.Navigator>
