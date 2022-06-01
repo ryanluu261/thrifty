@@ -121,7 +121,7 @@ class SearchTab extends Component {
 const styles = StyleSheet.create({
   title: {
     justifyContent: 'left',
-    alignItems: 'left',
+    alignItems: 'flex-start',
     paddingTop: 50,
     paddingBottom: 40,
     paddingLeft: 20,
@@ -132,14 +132,14 @@ const styles = StyleSheet.create({
   },
   subText: {
     fontSize: 20,
-    alignItems: 'left',
+    alignItems: 'flex-start',
     paddingLeft: 20,
     paddingBottom: 20,
   },
   searchBar: {
-    platform: 'default',
+    // platform: 'default',
     paddingLeft: 0,
-    background: '#fff',
+    // background: '#fff',
   },
   findFriends: {
     paddingBottom: 20,

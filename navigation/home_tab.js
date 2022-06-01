@@ -38,7 +38,7 @@ function HomeTab() {
     { key: 'first', title: 'Community' },
     { key: 'second', title: 'Friends' },
   ]);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   return (
     <View style={styles.container}>

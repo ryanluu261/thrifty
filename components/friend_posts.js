@@ -26,7 +26,7 @@ function FriendPosts() {
     },
   ]);
   const renderedPosts = posts.map((post) => (
-    <Post key={post.userName} postDetails={post} />
+    <Post key={post.id} postDetails={post} />
   ));
 
   return (

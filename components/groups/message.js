@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   text: {
-    fontSize: 12,
+    fontSize: 15,
     color: '#707882',
   },
   time: {

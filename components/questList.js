@@ -41,22 +41,20 @@ function QuestTab(props) {
     if (isFocused) {
       fetchUser();
       console.log('questList------');
-      console.log(user.quests.length);
+      console.log(user.quests);
     }
   }, [isFocused]);
 
   console.log(user);
   const groupQuestList = user.quests.map((quest) => (
-    <TouchableOpacity key={quest.id}>
-      <View style={styles.friendTask}>
-        <Text style={styles.friendBodyTitle}>
-          From your group &quot;Ohana&quot;:
-        </Text>
-        <Text style={styles.friendBodyText}>
-          {quest.title}
-        </Text>
-      </View>
-    </TouchableOpacity>
+    <View key={quest.id} style={styles.friendTask}>
+      <Text style={styles.friendBodyTitle}>
+        From your group &quot;Ohana&quot;:
+      </Text>
+      <Text style={styles.friendBodyText}>
+        {quest.title}
+      </Text>
+    </View>
   ));
 
   return (
@@ -79,6 +77,7 @@ function QuestTab(props) {
           <View style={styles.body}>
             <Text style={styles.bodyText}>
               {dailyQuest}
+              {/* Go on a sunrike! */}
             </Text>
           </View>
         </TouchableOpacity>
@@ -102,9 +101,7 @@ function QuestTab(props) {
         <Text style={styles.titleTextTwo}>
           Quests your friends assigned:
         </Text>
-        <View style={styles.groupQuestList}>
-          {groupQuestList}
-        </View>
+        {groupQuestList}
       </View>
     </ScrollView>
   );
@@ -131,7 +128,7 @@ const styles = StyleSheet.create({
   },
   topwrapper: {
     width: 350,
-    height: 125,
+    height: 175,
     backgroundColor: '#FFCC15',
     borderRadius: 10,
   },
@@ -171,7 +168,6 @@ const styles = StyleSheet.create({
     height: 125,
     backgroundColor: '#B3B3B3',
     borderRadius: 10,
-    marginBottom: 15,
   },
   friendBodyTitle: {
     fontWeight: 'bold',
@@ -190,10 +186,10 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#ffffff',
-    marginTop: 200,
+    marginTop: 90,
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 200,
+    marginBottom: 80,
     padding: 40,
     borderRadius: 10,
     flex: 1,
@@ -202,8 +198,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 100,
-    paddingBottom: 30,
+    paddingTop: 150,
+    paddingBottom: 50,
   },
   button: {
     alignItems: 'center',
@@ -217,16 +213,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontWeight: 'bold',
-  },
-  cancelButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: '#FFCC15',
-    marginTop: 20,
   },
 
 });
