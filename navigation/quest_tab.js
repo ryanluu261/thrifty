@@ -37,6 +37,10 @@ function QuestTab(props) {
     navigation.navigate('Camera', { screen: 'NewPost', params: { title: dailyQuest } });
   }
 
+  function handleQuestExit() {
+    setModalVisability(false);
+  }
+
   useEffect(() => {
     if (isFocused) {
       fetchUser();
@@ -94,6 +98,14 @@ function QuestTab(props) {
               >
                 <Text style={styles.buttonText}>
                   Upload
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonOne}
+                onPress={() => handleQuestExit()}
+              >
+                <Text style={styles.buttonText}>
+                  Cancel
                 </Text>
               </TouchableOpacity>
             </View>
@@ -217,6 +229,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontWeight: 'bold',
+  },
+  buttonOne: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+    marginTop: 20,
   },
   cancelButton: {
     alignItems: 'center',

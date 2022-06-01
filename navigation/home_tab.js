@@ -20,7 +20,6 @@ const renderTabBar = (props) => (
       fontWeight: 'bold',
       marginLeft: 'auto',
       marginRight: 'auto',
-      // user: props.user,
     }}
 
   />
@@ -38,7 +37,7 @@ function HomeTab() {
     { key: 'first', title: 'Community' },
     { key: 'second', title: 'Friends' },
   ]);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   return (
     <View style={styles.container}>

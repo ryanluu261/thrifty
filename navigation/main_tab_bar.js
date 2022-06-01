@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import About from '../components/about';
 import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, ActivityIndicator } from 'react-native';
 import SearchTab from './search_tab';
 import HomeTab from './home_tab';
 import GroupTab from './groups_tab';
@@ -16,6 +17,7 @@ import QuestTab from './quest_tab';
 import userGet from '../services/sidequestUser-api';
 import questGet from '../services/pullQuest-api';
 import CameraStack from '../components/camera_stack';
+import Loading from './load';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,19 +28,20 @@ class MainTabBar extends Component {
     this.state = {
       user: '',
       id: '62955568344a64f0f6811392',
-      questID: '6293e683ea1205c7349c484f',
+      questID: '6291215848ffc29b3b082a52',
+      loaded: false,
     };
   }
 
   componentDidMount() {
     this.fetchUser();
     this.fetchQuestData();
+    setTimeout(() => {
+      this.setState({
+        loaded: true,
+      });
+    }, 2000);
   }
-
-  // componentDidUpdate() {
-  //   this.fetchData();
-  //   this.fetchQuestData();
-  // }
 
   // ------------ put fetchData here! -------------//
   fetchUser() {
@@ -81,7 +84,6 @@ class MainTabBar extends Component {
 
   render() {
     console.log('main tab bar state print----------------');
-    // console.log(this.state.user.name);
     return (
       <NavigationContainer theme={MyTheme}>
         <Tab.Navigator
@@ -112,7 +114,7 @@ class MainTabBar extends Component {
             },
           })}
         >
-          <Stack.Screen name="Home" options={headerStyle} component={HomeTab} />
+          <Stack.Screen name="Home" options={headerStyle} component={this.state.loaded ? HomeTab : Loading} />
           <Stack.Screen name="Search" options={headerStyle} component={SearchTab} />
           <Stack.Screen name="Quest" options={headerStyle}>
             { (props) => <QuestTab {...props} dailyQuest={this.state.quest.task} />}
@@ -157,4 +159,5 @@ const headerStyle = {
     color: '#000000',
   },
 };
+
 export default MainTabBar;
