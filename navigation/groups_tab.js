@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 function GroupsTab() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Groups" component={GroupsList} />
+      <Stack.Screen name="Groups_Tab" options={headerStyle} component={GroupsList} />
       <Stack.Screen
         name="GroupsDetail"
         component={GroupsDetail}
@@ -20,5 +20,9 @@ function GroupsTab() {
     </Stack.Navigator>
   );
 }
+
+const headerStyle = {
+  headerShown: false,
+};
 
 export default GroupsTab;

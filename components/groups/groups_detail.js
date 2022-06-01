@@ -17,7 +17,7 @@ function GroupsDetail(props) {
 
   const renderedMembers = group.members.map((member) => {
     return (
-      <Text>
+      <Text key={member.name}>
         {member.name}
         ,
         {' '}
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     width: '60%',
     fontWeight: 'bold',
     padding: 5,
-    borderRadius: '30%',
+    borderRadius: 3,
     color: '#FFCC15',
   },
 });
