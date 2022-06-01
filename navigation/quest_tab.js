@@ -47,8 +47,8 @@ function QuestTab(props) {
 
   console.log(user);
   const groupQuestList = user.quests.map((quest) => (
-    <TouchableOpacity>
-      <View key={quest.id} style={styles.friendTask}>
+    <TouchableOpacity key={quest.id}>
+      <View style={styles.friendTask}>
         <Text style={styles.friendBodyTitle}>
           From your group &quot;Ohana&quot;:
         </Text>
@@ -79,7 +79,6 @@ function QuestTab(props) {
           <View style={styles.body}>
             <Text style={styles.bodyText}>
               {dailyQuest}
-              {/* Go on a sunrike! */}
             </Text>
           </View>
         </TouchableOpacity>
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
   },
   topwrapper: {
     width: 350,
-    height: 175,
+    height: 125,
     backgroundColor: '#FFCC15',
     borderRadius: 10,
   },
@@ -191,10 +190,10 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#ffffff',
-    marginTop: 90,
+    marginTop: 200,
     marginLeft: 30,
     marginRight: 30,
-    marginBottom: 80,
+    marginBottom: 200,
     padding: 40,
     borderRadius: 10,
     flex: 1,
@@ -203,8 +202,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 150,
-    paddingBottom: 50,
+    paddingTop: 100,
+    paddingBottom: 30,
   },
   button: {
     alignItems: 'center',
@@ -218,6 +217,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontWeight: 'bold',
+  },
+  cancelButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: '#FFCC15',
+    marginTop: 20,
   },
 
 });
