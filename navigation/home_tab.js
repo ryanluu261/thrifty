@@ -27,7 +27,7 @@ const renderTabBar = (props) => (
 
 const renderScene = SceneMap({
   first: CommunityPosts,
-  second: FriendPosts,
+  // second: FriendPosts,
 });
 
 function HomeTab() {
@@ -35,7 +35,7 @@ function HomeTab() {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'first', title: 'Community' },
-    { key: 'second', title: 'Friends' },
+    // { key: 'second', title: 'Friends' },
   ]);
   const [visible, setVisible] = useState(true);
 

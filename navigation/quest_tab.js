@@ -18,7 +18,7 @@ function QuestTab(props) {
   });
   const [userId, setUserId] = useState('62955568344a64f0f6811392');
   const isFocused = useIsFocused();
-
+  // const [questTitle, setQuestTitle] = useState(dailyQuest.title);
   // ------------ put fetchData here! -------------//
   function fetchUser() {
     userGet(userId)
@@ -34,7 +34,14 @@ function QuestTab(props) {
 
   function handleQuestPress() {
     setModalVisability(false);
+    // setQuestTitle(questTitle);
     navigation.navigate('Camera', { screen: 'NewPost', params: { title: dailyQuest } });
+  }
+
+  function handleGroupQuestPress() {
+    setModalVisability(true);
+    // setQuestTitle('Jump in the river');
+    // console.log(questTitle);
   }
 
   function handleQuestExit() {
@@ -49,9 +56,11 @@ function QuestTab(props) {
     }
   }, [isFocused]);
 
-  console.log(user);
   const groupQuestList = user.quests.map((quest) => (
-    <TouchableOpacity key={quest.id}>
+    <TouchableOpacity
+      key={quest}
+      onPress={() => handleGroupQuestPress(quest)}
+    >
       <View style={styles.friendTask}>
         <Text style={styles.friendBodyTitle}>
           From your group &quot;Ohana&quot;:
