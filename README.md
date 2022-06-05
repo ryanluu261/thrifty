@@ -22,7 +22,7 @@ TODO: short project description, some sample screenshots or mockups
 
 ## Deployment
 
-TODO: ~work in progress
+TODO: Install the expo go app on your apple device and run the the yarn start command in the terminal. Open the local host link and switch to tunnel and then scan the Qr code on your iphone camera app after clicking the tunnel button and you'll be able to run the app! 
 
 ## Authors
 
@@ -31,10 +31,14 @@ TODO: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed
 ## Acknowledgments
 
 I love my teammates -Zhoucai
+Teammates were homies and we got it done- Syed
+Goodjob team - Ke
+
+- Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA), and Tim Tregubov
 
 =======
 
-- Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA), and Tim Tregubov
+
 
 - also changing one line beep
 - changing one line for pull request beep boop
