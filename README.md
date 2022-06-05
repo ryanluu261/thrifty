@@ -30,9 +30,9 @@ TODO: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed
 
 ## Acknowledgments
 
-I love my teammates -Zhoucai
-Teammates were homies and we got it done- Syed
-Goodjob team - Ke
+- I love my teammates -Zhoucai
+-Teammates were homies and we got it done- Syed
+- Goodjob team - Ke
 
 - Will be added in but Jordan Sanz (TA) and Sathvika Korandla (TA), and Tim Tregubov
 
