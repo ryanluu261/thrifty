@@ -30,7 +30,7 @@ TODO: Install the expo go app on your apple device and run the the yarn start co
 
 ## Authors
 
-TODO: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed Hussaini
+Done: Zhoucai Ni, Ke Lou, Jose Hernandez Barbosa, Kashan Mahmood, Ryan Luu, Syed Hussaini
 
 ## Acknowledgments
 
