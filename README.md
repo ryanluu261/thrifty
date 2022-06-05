@@ -7,8 +7,12 @@ TODO: short project description, some sample screenshots or mockups
 
 - Creating an app called sideQuest where users are given daily tasks to complete and compete against their friends with
   a leaderboard and close friends feature as well!.
-- ![loginscreen](loginscreen.png))
-- ![feed](feedpage.png))
+  - [<img  src="./screenshots/modalpage.png" alt="modalpage" width="400" height="800" />](./screenshots/modalpage.png)
+  - [<img  src="./screenshots/homepage.png" alt="homepage" width="400" height="800" />](./screenshots/homepage.png)
+  - [<img  src="./screenshots/friendspage.png" alt="friendspage" width="400" height="800" />](./screenshots/friendspage.png)
+  - [<img  src="./screenshots/questspage.png" alt="questspage" width="400" height="800" />](./screenshots/questspage.png)
+  - [<img  src="./screenshots/groupquest.png" alt="questspage" width="400" height="800" />](./screenshots/groupquest.png)
+   - [<img  src="./screenshots/profilepage.png" alt="questspage" width="400" height="800" />](./screenshots/profilepage.png)
 
 ## Architecture
 
