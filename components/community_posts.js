@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet, View, ScrollView,
-} from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import Post from './post';
 import postsGet from '../services/sidequestPost-api';
 
 function CommunityPosts() {
-  console.log('community page-----------');
   function fetchPosts() {
     postsGet()
       .then((responseData) => {
         setPostList({
           responseData,
         });
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -34,11 +32,8 @@ function CommunityPosts() {
   ));
 
   return (
-
     <ScrollView style={styles.scroll}>
-      <View style={styles.container}>
-        {posts}
-      </View>
+      <View style={styles.container}>{posts}</View>
     </ScrollView>
   );
 }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet, View, Text, Image,
-} from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 class Post extends Component {
   constructor(props) {
@@ -18,16 +16,17 @@ class Post extends Component {
     return (
       <View style={styles.container}>
         <Image
+          resizeMode='contain'
           style={styles.image}
-          source={{ uri: this.postDetails.photoUrl }}
+          source={this.postDetails.photoUrl}
+          // source={{
+          //   uri: 'https://reactnative.dev/img/tiny_logo.png',
+          // }}
+          // source={require('../assets/angricat.png')}
         />
         <View style={styles.postDetails}>
-          <Text style={styles.userName}>
-            {this.postDetails.id}
-          </Text>
-          <Text style={styles.questName}>
-            {this.postDetails.title}
-          </Text>
+          <Text style={styles.userName}>{this.postDetails.photoUrl}</Text>
+          <Text style={styles.questName}>{this.postDetails.title}</Text>
           <Text style={styles.questDetails}>
             {this.postDetails.description}
           </Text>
@@ -39,19 +38,17 @@ class Post extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexBasis: '45%',
+    height: '30%',
     backgroundColor: 'white',
-    justifyContent: 'space-around',
-    borderWidth: 5,
-    borderColor: 'black',
-    width: '100%',
-    height: '100%',
+    borderWidth: 1,
+    borderColor: 'red',
     borderRadius: 8,
     marginBottom: 30,
     paddingBottom: 10,
   },
   postDetails: {
-    paddingTop: 5,
+    marginTop: 8,
     alignItems: 'flex-start',
     marginLeft: 10,
     marginRight: 10,
@@ -68,7 +65,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 650,
+    height: undefined,
+    aspectRatio: 1,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },

@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  useWindowDimensions,
-} from 'react-native';
+import { StyleSheet, View, useWindowDimensions } from 'react-native';
 import { SceneMap, TabView, TabBar } from 'react-native-tab-view';
 import FriendPosts from '../components/friend_posts';
 import CommunityPosts from '../components/community_posts';
@@ -21,13 +17,12 @@ const renderTabBar = (props) => (
       marginLeft: 'auto',
       marginRight: 'auto',
     }}
-
   />
 );
 
 const renderScene = SceneMap({
   first: CommunityPosts,
-  // second: FriendPosts,
+  second: FriendPosts,
 });
 
 function HomeTab() {
@@ -35,7 +30,7 @@ function HomeTab() {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'first', title: 'Community' },
-    // { key: 'second', title: 'Friends' },
+    { key: 'second', title: 'Friends' },
   ]);
   const [visible, setVisible] = useState(true);
 
@@ -49,7 +44,11 @@ function HomeTab() {
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
       />
-      {visible ? <ModalTab setVisible={setVisible} /> : <View styles={{ visible: false }} /> }
+      {visible ? (
+        <ModalTab setVisible={setVisible} />
+      ) : (
+        <View styles={{ visible: false }} />
+      )}
     </View>
   );
 }
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
+    backgroundColor: '#f3efe7',
     // height: '100%',
   },
   header: {
