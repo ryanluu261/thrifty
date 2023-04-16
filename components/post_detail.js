@@ -38,6 +38,9 @@ function PostDetail(props) {
             <Text style={styles.questDetails}>{post.description}</Text>
           </View>
         </View>
+        <View>
+          <Text style={styles.sellerHeader}>Seller</Text>
+        </View>
         <SellerInfo seller={post} />
       </View>
     </View>
@@ -54,8 +57,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    // backgroundColor: 'white',
-    // borderWidth: 1,
     borderColor: 'red',
     borderRadius: 8,
     marginBottom: 12,
@@ -96,6 +97,14 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#AADE79',
     borderRadius: 5,
+  },
+  sellerHeader: {
+    flex: -1,
+    marginLeft: 2,
+    marginTop: 12,
+    marginBottom: 0,
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
 

@@ -9,11 +9,20 @@ function SellerInfo(props) {
 
   return (
     <View style={styles.container}>
-      <Image
-        resizeMode="contain"
-        style={styles.image}
-        source={seller.sellerPic}
-      />
+      <View style={{
+        width: 40, height: 40, alignItems: 'center', alignContent: 'center', borderRadius: 8, overflow: 'hidden',
+      }}
+      >
+        <Image
+          resizeMode="cover"
+          style={{
+            width: '100%',
+            height: undefined,
+            aspectRatio: 1,
+          }}
+          source={seller.sellerPic}
+        />
+      </View>
       <View style={styles.sellerInfo}>
         <Text style={styles.userName}>{seller.sellerName}</Text>
         <View style={styles.rating}>
@@ -53,17 +62,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     // borderWidth: 1,
-    // borderColor: 'green',
-    borderRadius: 8,
-    marginBottom: 30,
-    paddingBottom: 10,
+    borderColor: 'green',
+    // marginBottom: 20,
+    paddingBottom: 30,
     alignItems: 'center',
   },
   sellerTitle: {
     alignItems: 'baseline',
     paddingLeft: 10,
-    // borderWidth: 1,
-    // borderColor: 'green',
   },
   sellerInfo: {
     flex: 1,
@@ -85,10 +91,13 @@ const styles = StyleSheet.create({
   transactionInfo: {
     flex: 1,
     flexDirection: 'row',
-    marginLeft: 4,
+    alignItems: 'center',
+    marginLeft: 8,
   },
   userName: {
-    marginTop: 4,
+    marginLeft: 6,
+    marginTop: 8,
+    marginBottom: 4,
     color: 'grey',
     alignItems: 'flex-end',
   },
@@ -101,22 +110,24 @@ const styles = StyleSheet.create({
   transaction: {
     flex: 1,
     height: 'auto',
+    marginTop: 4,
   },
   items: {
     flex: 1,
     flexDirection: 'row',
     textDecorationLine: 'underline',
+    marginTop: 4,
   },
   image: {
-    width: '10%',
-    borderRadius: '50%',
-    height: undefined,
-    aspectRatio: 1,
-    margin: 8,
-    marginTop: 14,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    alignSelf: 'flex-start',
+    // width: '10%',
+    // borderRadius: '50%',
+    // height: undefined,
+    // aspectRatio: 1,
+    // margin: 8,
+    // marginTop: 14,
+    // borderTopLeftRadius: 8,
+    // borderTopRightRadius: 8,
+    // alignSelf: 'flex-start',
   },
   shadowProp: {
     shadowColor: '#171717',
