@@ -23,8 +23,8 @@ function ProfileTab(props) {
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Stats' },
-    { key: 'second', title: 'Inventory' },
+    { key: 'first', title: 'Home' },
+    { key: 'second', title: 'Rewards' },
   ]);
 
   return (

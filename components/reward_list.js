@@ -13,11 +13,11 @@ import RewardDetail from './reward_detail';
 function RewardList() {
   const navigation = useNavigation();
   const [rewardList, setRewardList] = useState([
-    'Auto-complete today\'s taskkk',
-    'Set task for a friend',
-    'Double rewards for any task',
-    'Reroll today\'s task',
-    'Hello',
+    'Fast Shipper',
+    'Save CO2 together',
+    '100 LBS CO2 GOAL',
+    'WOW 10 Sale in a roll',
+    'First CO2 save with Thrifty',
   ]);
 
   const rewards = rewardList.map((reward) => (

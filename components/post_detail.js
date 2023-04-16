@@ -19,11 +19,20 @@ function PostDetail(props) {
       </TouchableOpacity>
       <View style={styles.bigPost}>
         <View style={styles.postSelf}>
-          <Image
-            resizeMode="contain"
-            style={styles.image}
-            source={post.photoUrl}
-          />
+          <View style={{
+            width: 360, height: 360, alignItems: 'center', alignContent: 'center', borderRadius: 8, overflow: 'hidden',
+          }}
+          >
+            <Image
+              resizeMode="cover"
+              style={{
+                width: '100%',
+                height: undefined,
+                aspectRatio: 1,
+              }}
+              source={post.photoUrl}
+            />
+          </View>
           <View style={styles.postDetails}>
             <Text style={styles.questName}>{post.title}</Text>
             <Text style={styles.questDetails}>{post.description}</Text>
@@ -57,6 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E9DFCF',
     marginBottom: 4,
     marginTop: 8,
+    overflow: 'hidden',
   },
   postDetails: {
     marginTop: 8,
@@ -69,19 +79,13 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
   questName: {
+    marginTop: 4,
     fontWeight: 'bold',
   },
   questDetails: {
     height: 'auto',
-    // wordWrap: 'wrap',
-  },
-  image: {
-    width: '100%',
-    height: undefined,
-    aspectRatio: 1,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
-    borderRadius: 8,
+    marginTop: 3,
+    textAlign: 'left',
   },
   button: {
     flex: -1,

@@ -15,7 +15,7 @@ function FriendPosts() {
       photoUrl: require('../assets/post.jpeg'),
       id: 1,
       title: 'Lake photography',
-      description: 'No scratches, well conditioned',
+      description: 'No scratches, well conditioned, aidhfpasdjfa;okjfdaos',
       sellerName: 'Ryan Luu',
       sellerPic: require('../assets/keggy.jpeg'),
       sellerRating: 4.5,
