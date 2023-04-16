@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet, View, Text, Image, TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SellerInfo from './seller_info';
 
@@ -11,18 +13,21 @@ function PostDetail(props) {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('FriendPosts')}>
+        onPress={() => navigation.navigate('FriendPosts')}
+      >
         <Text style={{ color: 'white' }}>Back</Text>
       </TouchableOpacity>
       <View style={styles.bigPost}>
-        <Image
-          resizeMode='contain'
-          style={styles.image}
-          source={post.photoUrl}
-        />
-        <View style={styles.postDetails}>
-          <Text style={styles.questName}>{post.title}</Text>
-          <Text style={styles.questDetails}>{post.description}</Text>
+        <View style={styles.postSelf}>
+          <Image
+            resizeMode="contain"
+            style={styles.image}
+            source={post.photoUrl}
+          />
+          <View style={styles.postDetails}>
+            <Text style={styles.questName}>{post.title}</Text>
+            <Text style={styles.questDetails}>{post.description}</Text>
+          </View>
         </View>
         <SellerInfo seller={post} />
       </View>
@@ -34,23 +39,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: '#F3EFE7',
   },
   bigPost: {
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: 'white',
-    borderWidth: 1,
+    // backgroundColor: 'white',
+    // borderWidth: 1,
     borderColor: 'red',
     borderRadius: 8,
-    marginBottom: 30,
+    marginBottom: 12,
     paddingBottom: 10,
+  },
+  postSelf: {
+    borderRadius: 12,
+    backgroundColor: '#E9DFCF',
+    marginBottom: 4,
+    marginTop: 8,
   },
   postDetails: {
     marginTop: 8,
     alignItems: 'flex-start',
     marginLeft: 10,
     marginRight: 10,
+    marginBottom: 18,
   },
   userName: {
     color: 'grey',
@@ -66,8 +79,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: undefined,
     aspectRatio: 1,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    borderRadius: 8,
   },
   button: {
     flex: -1,
@@ -76,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
-    backgroundColor: 'gray',
+    backgroundColor: '#AADE79',
     borderRadius: 5,
   },
 });
