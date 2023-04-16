@@ -1,50 +1,96 @@
 import React, { useState } from 'react';
 
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Post from './post';
 
 function FriendPosts() {
+  const navigation = useNavigation();
+
   const [posts, setPosts] = useState([
     {
       photoUrl: require('../assets/post.jpeg'),
-      id: 'Bob',
+      id: 1,
       title: 'Sunrike',
       description: 'Had the best times with my fav ppl',
+      sellerName: 'Ryan Luu',
+      sellerPic: require('../assets/keggy.jpeg'),
+      sellerRating: 4.5,
+      reviewNo: 20,
+      transactionNo: 30,
+      itemsNo: 15,
     },
     {
       photoUrl: require('../assets/angricat.png'),
-      id: 'Moe',
+      id: 2,
       title: 'A Mile Run',
       description: 'A solid run!',
+      sellerName: '',
+      sellerPic: require('../assets/keggy.jpeg'),
+      sellerRating: 4.5,
+      reviewNo: 20,
+      transactionNo: 30,
+      itemsNo: 15,
     },
     {
       photoUrl: require('../assets/angricat.png'),
-      id: 'Billy',
+      id: 3,
       title: 'Meditation',
       description: 'Feels closer to myself spritually now',
+      sellerName: '',
+      sellerPic: require('../assets/keggy.jpeg'),
+      sellerRating: 4.5,
+      reviewNo: 20,
+      transactionNo: 30,
+      itemsNo: 15,
     },
     {
       photoUrl: require('../assets/angricat.png'),
-      id: 'Bob',
+      id: 4,
       title: 'Sunrike',
       description: 'Had the best times with my fav ppl',
+      sellerName: '',
+      sellerPic: require('../assets/keggy.jpeg'),
+      sellerRating: 4.5,
+      reviewNo: 20,
+      transactionNo: 30,
+      itemsNo: 15,
     },
     {
       photoUrl: require('../assets/angricat.png'),
-      id: 'Moe',
+      id: 5,
       title: 'A Mile Run',
       description: 'A solid run!',
+      sellerName: '',
+      sellerPic: require('../assets/keggy.jpeg'),
+      sellerRating: 4.5,
+      reviewNo: 20,
+      transactionNo: 30,
+      itemsNo: 15,
     },
     {
       photoUrl: require('../assets/angricat.png'),
-      id: 'Billy',
+      id: 6,
       title: 'Meditation',
       description: 'Feels closer to myself spritually now',
+      sellerName: '',
+      sellerPic: require('../assets/keggy.jpeg'),
+      sellerRating: 4.5,
+      reviewNo: 20,
+      transactionNo: 30,
+      itemsNo: 15,
     },
   ]);
   const renderedPosts = posts.map((post) => (
-    <Post style={styles.postTile} key={post.id} postDetails={post} />
+    <TouchableOpacity
+      key={post.id}
+      style={styles.postTile}
+      onPress={() => {
+        navigation.navigate('PostDetail', { post });
+      }}>
+      <Post key={post.id} postDetails={post} />
+    </TouchableOpacity>
   ));
 
   return (
@@ -63,8 +109,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   postTile: {
-    // flexBasis: '50%',
-    // width: '50%',
+    flexBasis: '45%',
+    height: '30%',
   },
 });
 

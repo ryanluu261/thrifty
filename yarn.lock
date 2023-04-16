@@ -9968,6 +9968,11 @@ react-native-size-matters@^0.4.0:
   resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.4.0.tgz#01bfd0d59454318f4e0b13fe9c1eb0523d70f2e0"
   integrity sha512-8/C0htHrFWeUm9N8JegmadovUfgTWkGBkDPZ1N3YkXtDWb+98Ya2gThiKcu445r8c7YhcrBfnHz/mYsXIusaOQ==
 
+react-native-star-rating-widget@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-star-rating-widget/-/react-native-star-rating-widget-1.7.1.tgz#3dd02a2a0e43e9dee3ad96fd24c48ac442c583ea"
+  integrity sha512-AdEJHLrosjxv4vLNmEIcePuU8CAPsbyCjCHI21T2SOmwN9Gh4XiNS5JZOZtDQe3Q7ZCqYeQRj3oi0nYrNdUvAQ==
+
 react-native-svg@^12.3.0:
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.3.0.tgz#40f657c5d1ee366df23f3ec8dae76fd276b86248"

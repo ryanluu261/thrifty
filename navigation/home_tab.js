@@ -5,6 +5,7 @@ import FriendPosts from '../components/friend_posts';
 import CommunityPosts from '../components/community_posts';
 // import modal
 import ModalTab from './modal_tab';
+import PostScreen from '../components/post_screen';
 
 const renderTabBar = (props) => (
   <TabBar
@@ -22,7 +23,7 @@ const renderTabBar = (props) => (
 
 const renderScene = SceneMap({
   first: CommunityPosts,
-  second: FriendPosts,
+  second: PostScreen,
 });
 
 function HomeTab() {
