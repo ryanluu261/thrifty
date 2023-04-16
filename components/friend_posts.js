@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View, StyleSheet, ScrollView, TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Post from './post';
@@ -12,8 +14,8 @@ function FriendPosts() {
     {
       photoUrl: require('../assets/post.jpeg'),
       id: 1,
-      title: 'Sunrike',
-      description: 'Had the best times with my fav ppl',
+      title: 'Lake photography',
+      description: 'No scratches, well conditioned',
       sellerName: 'Ryan Luu',
       sellerPic: require('../assets/keggy.jpeg'),
       sellerRating: 4.5,
@@ -24,8 +26,8 @@ function FriendPosts() {
     {
       photoUrl: require('../assets/angricat.png'),
       id: 2,
-      title: 'A Mile Run',
-      description: 'A solid run!',
+      title: 'Succulent plant',
+      description: 'thriving, had it for 3 month',
       sellerName: '',
       sellerPic: require('../assets/keggy.jpeg'),
       sellerRating: 4.5,
@@ -36,8 +38,8 @@ function FriendPosts() {
     {
       photoUrl: require('../assets/angricat.png'),
       id: 3,
-      title: 'Meditation',
-      description: 'Feels closer to myself spritually now',
+      title: 'Meditation carpet',
+      description: 'Feels closer to yourself spritually',
       sellerName: '',
       sellerPic: require('../assets/keggy.jpeg'),
       sellerRating: 4.5,
@@ -48,8 +50,8 @@ function FriendPosts() {
     {
       photoUrl: require('../assets/angricat.png'),
       id: 4,
-      title: 'Sunrike',
-      description: 'Had the best times with my fav ppl',
+      title: 'Hiking boots SZ 10',
+      description: 'Worn 3 times, quit hiking lol',
       sellerName: '',
       sellerPic: require('../assets/keggy.jpeg'),
       sellerRating: 4.5,
@@ -88,7 +90,8 @@ function FriendPosts() {
       style={styles.postTile}
       onPress={() => {
         navigation.navigate('PostDetail', { post });
-      }}>
+      }}
+    >
       <Post key={post.id} postDetails={post} />
     </TouchableOpacity>
   ));
